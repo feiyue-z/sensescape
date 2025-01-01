@@ -10,22 +10,22 @@ export function MainScene() {
     const meshGroup = new THREE.Group();
 
     const cube = new Cube( [ 0, 3, 0 ] );
-    const booImage = new ImageMesh( '../../assets/boo.png', [ 1, 1 ], [ 1, 1, 1 ] );
+    const booImage = new ImageMesh( '../../assets/boo.png', 1, 1, [ 1, 1, 1 ] );
 
     loadGltfModel('../../assets/scene.gltf')
     .then( ( model ) => {
-        // meshGroup.add( model );
-        scene.add( model );
+        // scene.add( model );
+        meshGroup.add( model) ;
         console.log( 'Model loaded:', model );
-    })
+    } )
     .catch( ( error ) => {
         console.error( 'Error loading model:', error );
-    });
+    } );
 
     const light = new THREE.AmbientLight( 0xFFFFFF );
 
-    meshGroup.add(cube);
-    meshGroup.add(booImage);
+    meshGroup.add( cube) ;
+    meshGroup.add( booImage );
 
     scene.add( meshGroup );
     scene.add( light );
@@ -36,9 +36,9 @@ export function MainScene() {
 
 export function mainScreenUpdate(group) {
 
-    group.children.forEach((mesh) => {
+    group.children.forEach( (mesh) => {
         mesh.rotation.x += 0.005;
         mesh.rotation.y += 0.005;
-    });
+    } );
 
 }

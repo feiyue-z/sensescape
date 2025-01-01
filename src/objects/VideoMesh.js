@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-export default function VideoMesh( url, size, position = [ 0, 0, 0 ] ) {
+export default function VideoMesh( url, width, height, position = [ 0, 0, 0 ] ) {
 
     const video = document.createElement( 'video' );
     video.src = 'path/to/video.mp4'; // TODO: replace with url
@@ -14,11 +14,11 @@ export default function VideoMesh( url, size, position = [ 0, 0, 0 ] ) {
     videoTexture.magFilter = THREE.LinearFilter;
 
     const videoMaterial = new THREE.MeshBasicMaterial( { map: videoTexture } );
-    const videoGeometry = new THREE.PlaneGeometry( ...size ); // width, height
+    const videoGeometry = new THREE.PlaneGeometry( width, height ); // width, height
 
-    const videoMesh = new THREE.Mesh( videoGeometry, videoMaterial );
+    const mesh = new THREE.Mesh( videoGeometry, videoMaterial );
     // TODO: set position
 
-    return videoMesh;
+    return mesh;
 
 }
