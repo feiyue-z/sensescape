@@ -12,22 +12,22 @@ export function EntryScene() {
     const interactiveObjects = new THREE.Group();
 
     const cube = new Cube( { position: [ 0, 3, 0 ] } );
-    interactiveObjects.add(cube);
+    interactiveObjects.add( cube );
 
-    const booImage = new ImageBoardMesh({
+    const booImage = new ImageBoardMesh( {
         imagePath: '../../assets/textures/boo.png',
         width: 2,
         height: 2,
         position: [ 1, 1, 0 ]
-    });
+    } );
     interactiveObjects.add( booImage );
 
-    const acidImage = new ImageBoardMesh({
+    const acidImage = new ImageBoardMesh( {
         imagePath: '../../assets/textures/render10.png',
         width: 2,
         height: 2,
         position: [ -3, 1, 0 ]
-    });
+    } );
     interactiveObjects.add( acidImage );
     
     const textBoard = new TextBoardMesh( {
@@ -50,7 +50,7 @@ export function EntryScene() {
         path: '../../assets/models/fantasy_sakura.glb',
         position: [ -1, 0, 0 ],
         // scale: [ 0.1, 0.1, 0.1 ]
-    })
+    } )
     .then( ( model ) => {
         interactiveObjects.add( model) ;
         console.log( 'Model loaded:', model );
