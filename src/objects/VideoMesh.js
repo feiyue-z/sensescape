@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 
-export default function VideoMesh( url, width, height, position = [ 0, 0, 0 ] ) {
+// TODO: not really done yet
 
+export default function VideoMesh( url, width, height, position = [ 0, 0, 0 ] ) {
     const video = document.createElement( 'video' );
     video.src = 'path/to/video.mp4'; // TODO: replace with url
     video.loop = true;
@@ -20,5 +21,4 @@ export default function VideoMesh( url, width, height, position = [ 0, 0, 0 ] ) 
     // TODO: set position
 
     return mesh;
-
 }
