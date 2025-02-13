@@ -15,7 +15,7 @@ export function EntryScene() {
     interactiveObjects.add( cube );
 
     const booImage = new ImageBoardMesh( {
-        imagePath: '../../assets/textures/boo.png',
+        imagePath: './assets/textures/boo.png',
         width: 2,
         height: 2,
         position: [ 1, 1, 0 ]
@@ -23,7 +23,7 @@ export function EntryScene() {
     interactiveObjects.add( booImage );
 
     const acidImage = new ImageBoardMesh( {
-        imagePath: '../../assets/textures/render10.png',
+        imagePath: './assets/textures/render10.png',
         width: 2,
         height: 2,
         position: [ -3, 1, 0 ]
@@ -47,7 +47,7 @@ export function EntryScene() {
 
     loadGltfModel({
         // path: '../../assets/models/1.glb',
-        path: '../../assets/models/fantasy_sakura.glb',
+        path: './assets/models/fantasy_sakura.glb',
         position: [ -1, 0, 0 ],
         // scale: [ 0.1, 0.1, 0.1 ]
     } )
