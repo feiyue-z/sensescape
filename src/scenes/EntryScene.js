@@ -11,14 +11,14 @@ export function EntryScene() {
     const allObjects = new THREE.Group();
     const interactiveObjects = new THREE.Group();
 
-    const cube = new Cube( { position: [ 0, 3, 0 ] } );
+    const cube = new Cube( { position: [ 0, -1, -1 ] } );
     interactiveObjects.add( cube );
 
     const booImage = new ImageBoardMesh( {
         imagePath: './assets/textures/boo.png',
         width: 2,
         height: 2,
-        position: [ 1, 1, 0 ]
+        position: [ 1, -1, 0 ]
     } );
     interactiveObjects.add( booImage );
 
@@ -26,7 +26,7 @@ export function EntryScene() {
         imagePath: './assets/textures/render10.png',
         width: 2,
         height: 2,
-        position: [ -3, 1, 0 ]
+        position: [ -3, -1, 0 ]
     } );
     interactiveObjects.add( acidImage );
     
@@ -39,7 +39,7 @@ export function EntryScene() {
         fontFamily: 'Arial',
         fontColor: '#FF0000',
         backgroundColor: '#FFFFFF',
-        position: [ 3, 3, 1 ]
+        position: [ 3, -1, 1 ]
     } );
     interactiveObjects.add( textBoard );
 
@@ -49,7 +49,7 @@ export function EntryScene() {
         // path: '../../assets/models/1.glb',
         path: './assets/models/fantasy_sakura.glb',
         position: [ -1, 0, 0 ],
-        // scale: [ 0.1, 0.1, 0.1 ]
+        scale: [ 0.5, 0.5, 0.5 ]
     } )
     .then( ( model ) => {
         interactiveObjects.add( model) ;
