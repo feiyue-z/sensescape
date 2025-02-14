@@ -26,7 +26,7 @@ export function EntryScene() {
         imagePath: './assets/textures/render10.png',
         width: 2,
         height: 2,
-        position: [ -3, 0, -3 ]
+        position: [ -3, -3, -3 ]
     } );
     interactiveObjects.add( acidImage );
     
@@ -48,6 +48,19 @@ export function EntryScene() {
     loadGltfModel({
         path: './assets/models/fantasy_sakura.glb',
         position: [ -1, 0, -3 ]
+    } )
+    .then( ( model ) => {
+        interactiveObjects.add( model) ;
+        console.log( 'Model loaded:', model );
+    } )
+    .catch( ( error ) => {
+        console.error( 'Error loading model:', error );
+    } );
+
+    loadGltfModel({
+        path: './assets/models/1.glb',
+        position: [ -3, 1, -3 ],
+        scale: [ 0.2, 0.2, 0.2]
     } )
     .then( ( model ) => {
         interactiveObjects.add( model) ;
