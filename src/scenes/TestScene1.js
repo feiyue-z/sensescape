@@ -4,8 +4,10 @@ import ImageBoardMesh from '../objects/ImageBoardMesh.js';
 import SkydomeMesh from '../objects/GradientSkydome.js';
 import { loadGltfModel } from '../utils/MeshUtils.js'
 import TextBoardMesh from '../objects/TextBoardMesh.js';
+import RippleEffect from '../objects/RippleEffect.js';
 
 const skydome = new SkydomeMesh();
+const ripple = new RippleEffect( 10 );
 
 export function EntryScene() {
     const allObjects = new THREE.Group();
@@ -18,7 +20,8 @@ export function EntryScene() {
         imagePath: './assets/textures/boo.png',
         width: 2,
         height: 2,
-        position: [ 1, 0, -3 ]
+        // position: [ 1, 0, -3 ]
+        position: [ -3, 2, -3.5 ]
     } );
     interactiveObjects.add( booImage );
 
@@ -45,12 +48,25 @@ export function EntryScene() {
 
     const ambientLight = new THREE.AmbientLight( 0xffffff, 0.5 );
 
-    loadGltfModel({
+    loadGltfModel( {
         path: './assets/models/fantasy_sakura.glb',
         position: [ -1, 0, -3 ]
     } )
     .then( ( model ) => {
-        interactiveObjects.add( model) ;
+        interactiveObjects.add( model );
+        console.log( 'Model loaded:', model );
+    } )
+    .catch( ( error ) => {
+        console.error( 'Error loading model:', error );
+    } );
+
+    loadGltfModel( {
+        path: './assets/models/1.glb',
+        position: [ -4, 1, -3 ],
+        scale: [ 0.2, 0.2, 0.2 ]
+    } )
+    .then( ( model ) => {
+        interactiveObjects.add( model );
         console.log( 'Model loaded:', model );
     } )
     .catch( ( error ) => {
@@ -58,32 +74,36 @@ export function EntryScene() {
     } );
 
     loadGltfModel({
-        path: './assets/models/1.glb',
-        position: [ -3, 1, -3 ],
-        scale: [ 0.2, 0.2, 0.2]
+        path: './assets/models/portal.glb',
+        position: [ -3, 0, -3 ],
+        scale: [ 0.01, 0.01, 0.01 ]
     } )
     .then( ( model ) => {
-        interactiveObjects.add( model) ;
+        interactiveObjects.add( model );
         console.log( 'Model loaded:', model );
     } )
     .catch( ( error ) => {
         console.error( 'Error loading model:', error );
     } );
 
+    const ripple = new RippleEffect( 5 );
+    interactiveObjects.add( ripple );
+
     allObjects.add( ambientLight );
     allObjects.add( skydome );
     allObjects.add( interactiveObjects );
-
+    
     return { allObjects, interactiveObjects };
 }
 
-export function mainScreenUpdate(group) {
-    group.children.forEach( (mesh) => {
+export function mainScreenUpdate( group ) {
+    group.children.forEach( ( mesh ) => {
         mesh.rotation.x += 0.005;
         mesh.rotation.y += 0.005;
     } );
 }
 
-export function entrySceneAnimate() {
+export function entrySceneAnimate( deltaTime ) {
     skydome.material.uniforms.iTime.value = performance.now() * 0.001;
+    ripple.update( deltaTime );
 }

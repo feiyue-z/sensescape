@@ -1,73 +1,100 @@
 import * as THREE from 'three';
 import { VRButton } from 'three/addons/webxr/VRButton.js';
-import { EntryScene, entrySceneAnimate } from './src/scenes/EntryScene.js';
+import { EntryScene, entrySceneAnimate } from './src/scenes/TestScene1.js';
 import gsap from 'gsap';
 import SceneManager from './src/SceneManager.js';
+import { Island1Scene } from './src/scenes/Island1Scene.js';
+import { LightTestScene } from './src/scenes/LightTestScene.js';
 
-// Set up camera
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.01, 5000 );
-camera.position.set( 0, 2, 5 );
+let camera, renderer, scene;
+let mouse, raycaster;
+let interactives;
 
-// Set up renderer
-const renderer = new THREE.WebGLRenderer();
-renderer.xr.enabled = true;
-renderer.setSize( window.innerWidth, window.innerHeight );
-renderer.setAnimationLoop( animate ); // Start running animation loop
+init();
 
-// Append DOM elements
-document.body.appendChild( renderer.domElement );
-document.body.appendChild( VRButton.createButton( renderer ) );
+function init() {
+    // Set up camera
+    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.01, 5000 );
+    camera.position.set( 0, 2, 5 );
 
-// Initialize SceneManager and add scenes
-const scene = new THREE.Scene(); // Root container for 3D objects
-const interactives = new THREE.Group();
-const sceneManager = new SceneManager( scene, interactives );
+    // Set up renderer
+    renderer = new THREE.WebGLRenderer();
+    renderer.xr.enabled = true;
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setAnimationLoop( animate ); // Start running animation loop
 
-// Add scenes
-sceneManager.addScene( 'main', new EntryScene() );
-sceneManager.loadScene( 'main' );
-console.log('Scene after loading:', scene.children);
+    // Append DOM elements
+    document.body.appendChild( renderer.domElement );
+    document.body.appendChild( VRButton.createButton( renderer ) );
 
-// Listen to keyboard and mouse events
-const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
-document.addEventListener( 'keydown', ( event ) => onKeyDown( event ) );
-document.addEventListener( 'click', ( event ) => onMouseClick( event ) );
+    // Initialize SceneManager and add scenes
+    scene = new THREE.Scene(); // Root container for 3D objects
+    scene.background = new THREE.Color( 0xB1B1B1 );
 
-// Listen to VR controller event
-const controller = renderer.xr.getController( 0 ); // 0 or 1 for left/right controller
-controller.addEventListener( 'selectstart', ( event ) => onSelectStart( event ) );
-controller.addEventListener( 'selectend', ( event ) => onSelectEnd( event ) );
-scene.add( controller );
+    interactives = new THREE.Group();
+    const sceneManager = new SceneManager( scene, interactives );
+
+    sceneManager.addScene( 'main', new Island1Scene() );
+    sceneManager.loadScene( 'main' );
+
+    // Listen to keyboard and mouse events
+    raycaster = new THREE.Raycaster();
+    mouse = new THREE.Vector2();
+    document.addEventListener( 'keydown', ( event ) => onKeyDown( event ) );
+    document.addEventListener( 'click', ( event ) => onMouseClick( event ) );
+
+    // Listen to VR controller event
+    const controller = renderer.xr.getController( 0 ); // 0 or 1 for left/right controller
+    controller.addEventListener( 'selectstart', ( event ) => onSelectStart( event ) );
+    controller.addEventListener( 'selectend', ( event ) => onSelectEnd( event ) );
+    scene.add( controller );
+}
+
+// const clock = new THREE.Clock();
 
 function animate() {
-    entrySceneAnimate();
-    renderer.render ( scene, camera );
+    // const deltaTime = clock.getDelta();
+    // entrySceneAnimate( deltaTime );
+    renderer.render( scene, camera );
 }
 
 function onKeyDown( event ) {
     console.log( `Key pressed: ${ event.key }.` );
 
-    // TODO: wait for designers to decide if we want animation for keyboard movement
     switch ( event.key ) {
         case 'w':
-            // camera.translateZ( -0.5 );
-            gsap.to( camera.position, {
-                duration: 0.5,
-                z: camera.position.z - 1.0,
-                ease: "power2.inOut" 
-            } )
+            camera.translateZ( -500 );
+            // gsap.to( camera.position, {
+            //     duration: 0.5,
+            //     z: camera.position.z - 1.0,
+            //     ease: "power2.inOut" 
+            // } )
             break;
         case 's':
-            camera.translateZ( 0.5 );
+            camera.translateZ( 500 );
             break;
         case 'a':
-            camera.translateX( -0.5 );
+            camera.translateX( -500 );
             break;
         case 'd':
-            camera.translateX( 0.5 );
+            camera.translateX( 500 );
             break;
     }
+
+    // switch ( event.key ) {
+    //     case 'w':
+    //         camera.translateZ( -1 );
+    //         break;
+    //     case 's':
+    //         camera.translateZ( 1 );
+    //         break;
+    //     case 'a':
+    //         camera.translateX( -1 );
+    //         break;
+    //     case 'd':
+    //         camera.translateX( 1 );
+    //         break;
+    // }
 }
 
 function onMouseClick( event ) {
