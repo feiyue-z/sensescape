@@ -33,7 +33,7 @@ export function Island1Scene() {
             console.error( 'Failed to load model:', error )
         } );
 
-    loadObjModelWithMtl( './assets/island_1/4hub.obj', './assets/island_1/4hub.mtl' )
+    loadObjModelWithMtl( './assets/island_1/4island.obj', './assets/island_1/4island.mtl' )
         .then( ( object ) => {
             interactiveObjects.add( object );
         } )
