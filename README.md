@@ -5,6 +5,8 @@
 3. Install dependencies: `npm install`
 ## Running the Project
 From your terminal, run: `npx vite`
+## Deploy the Project
+From your terminal, run: `npm run build` and then `npx gh-pages -d dist`
 ## Folder Structure
 ```
 📦 project-root
