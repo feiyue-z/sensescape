@@ -3,9 +3,8 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
 
-export function loadGltfModel( options = {} ) {
+export function loadGltfModel( path, options = {} ) {
     const {
-        path,
         position = [ 0, 0, 0 ],
         scale = [ 1, 1, 1 ]
     } = options;

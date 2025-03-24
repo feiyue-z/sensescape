@@ -1,62 +1,57 @@
-import * as THREE from 'three';
-
 class SceneManager {
-    constructor( scene, interactives ) {
-        this.currentScene = scene;
-        this.currentInteractives = interactives;
+    constructor() {
+        if ( SceneManager.instance ) {
+            return SceneManager.instance;
+        }
+
+        this.rootScene = null;
         this.scenes = {};
-        this.currentSceneKey = null;
+        this.currentScene = null;
+
+        SceneManager.instance = this;
+    }
+
+    init( scene ) {
+        this.rootScene = scene;
     }
 
     addScene( key, scene ) {
-        this.scenes[ key ] = {
-            allObjects: scene.allObjects,
-            interactiveObjects: scene.interactiveObjects
-        };
+        this.scenes[ key ] = scene;
     }
 
     loadScene( key ) {
-        const scene = this.scenes[ key ];
+        const newScene = this.scenes[ key ];
 
-        if ( !scene ) {
+        if ( !newScene ) {
             console.error( `Cannot find scene ${ key }!` );
             return;
         }
 
-        if ( this.currentSceneKey ) {
-            this.unloadScene( this.currentSceneKey );
+        if ( this.currentScene ) {
+            this.unloadScene();
         }
 
-        this.currentSceneKey = key;
-        this.currentScene.add( scene.allObjects );
-
-        // Note only the reference is updated here
-        // because add() moves the objects to a new parent group
-        this.currentInteractives.children = scene.interactiveObjects.children;
+        this.currentScene = newScene;
+        this.rootScene.add( this.currentScene.group );
     }
 
-    unloadScene( key ) {
-        const scene = this.scenes[ key ];
-
-        if ( !scene ) {
-            console.error( `Cannot find scene ${ key }!` );
-            return;
+    unloadScene() {
+        if ( this.currentScene ) {
+            this.rootScene.remove( this.currentScene.group );
+            this.currentScene.unload();
+            this.currentScene = null;
         }
+    }
 
-        // Remove scene from root scene
-        this.currentScene.remove( scene.allObjects );
-        
-        // Free up GPU memory by disposing of 3D objects in scene
-        scene.allObjects.traverse( ( child ) => {
-            if ( child.isMesh ) {
-                child.geometry.dispose();
-                if ( child.material.map ) {
-                    child.material.map.dispose();
-                }
-                child.material.dispose();
-            }
-        });
+    getCurrentScene() {
+        return this.currentScene;
+    }
+
+    animate( camera ) {
+        if ( this.currentScene ) {
+            this.currentScene.animate( camera );
+        }
     }
 }
 
-export default SceneManager;
+export default new SceneManager();
