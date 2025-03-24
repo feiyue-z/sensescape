@@ -1,5 +1,5 @@
 import { BaseScene } from "./BaseScene.js";
-import { loadObjModel } from '../utils/MeshUtils.js'
+import { loadObjModel } from '../MeshUtils.js'
 
 export class BeyondProductsScene extends BaseScene {
     constructor() {

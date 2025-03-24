@@ -2,7 +2,7 @@ import * as THREE from 'three';
 
 import { BaseScene } from "./BaseScene.js";
 import { createVolumetricFog } from '../objects/VolumetricFog.js';
-import { loadGltfModel } from '../utils/MeshUtils.js';
+import { loadGltfModel } from '../MeshUtils.js';
 import { PortalHitbox } from '../objects/PortalHitbox.js';
 
 export class LightingTestScene extends BaseScene {
