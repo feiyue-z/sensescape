@@ -15,9 +15,6 @@ export default class ImageBoardMesh extends THREE.Mesh {
             map: texture,
             transparent: true,  // Enable transparency
             alphaTest: 0.1,    // Helps with sorting transparent pixels
-            // You could also use these if needed:
-            // depthWrite: false,
-            // depthTest: true,
             side: THREE.DoubleSide  // Render both sides of the plane
         } );
         const geometry = new THREE.PlaneGeometry( width, height );
