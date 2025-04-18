@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
-import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
+// import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+// import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
 
 export function loadGltfModel( path, options = {} ) {
     const {
@@ -33,28 +33,28 @@ export function loadGltfModel( path, options = {} ) {
     } );
 }
 
-export function loadObjModel( objPath ) {
-    return new Promise( ( resolve, reject ) => {
-        const objLoader = new OBJLoader();
-        objLoader.load( objPath, ( object ) => {
-            resolve( object );
-        }, undefined, reject );
-    } );
-}
+// export function loadObjModel( objPath ) {
+//     return new Promise( ( resolve, reject ) => {
+//         const objLoader = new OBJLoader();
+//         objLoader.load( objPath, ( object ) => {
+//             resolve( object );
+//         }, undefined, reject );
+//     } );
+// }
 
-export function loadObjModelWithMtl( objPath, mtlPath ) {
-    return new Promise( ( resolve, reject ) => {
-        const mtlLoader = new MTLLoader();
+// export function loadObjModelWithMtl( objPath, mtlPath ) {
+//     return new Promise( ( resolve, reject ) => {
+//         const mtlLoader = new MTLLoader();
 
-        mtlLoader.load( mtlPath, ( materials ) => {
-            materials.preload();
+//         mtlLoader.load( mtlPath, ( materials ) => {
+//             materials.preload();
 
-            const objLoader = new OBJLoader();
-            objLoader.setMaterials( materials );
+//             const objLoader = new OBJLoader();
+//             objLoader.setMaterials( materials );
 
-            objLoader.load( objPath, ( object ) => {
-                resolve( object );
-            }, undefined, reject );
-        }, undefined, reject );
-    } );
-}
+//             objLoader.load( objPath, ( object ) => {
+//                 resolve( object );
+//             }, undefined, reject );
+//         }, undefined, reject );
+//     } );
+// }

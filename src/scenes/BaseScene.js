@@ -3,9 +3,10 @@ import * as THREE from 'three';
 import { LAYER_VOLUMETRIC_LIGHTING } from '../objects/VolumetricFog.js';
 
 export class BaseScene {
-    constructor() {
+    constructor( listener ) {
         this.group = new THREE.Group(); // Holds all objects in the scene
         this.portals = []
+        this.sound = new THREE.Audio( listener );
     }
 
     load() {}
@@ -37,6 +38,28 @@ export class BaseScene {
             //     }
             // }
         } );
+    }
+
+    loadSound( path ) {
+        this.soundReady = new Promise( ( resolve ) => {
+            const loader = new THREE.AudioLoader();
+            loader.load( path, ( buffer ) => {
+                this.sound.setBuffer( buffer );
+                this.sound.setLoop( true );
+                resolve();
+            } );
+        } );
+    }
+
+    async playSound() {
+        await this.soundReady;
+        this.sound.play();
+    }
+
+    stopSound() {
+        if ( this.sound.isPlaying ) {
+            this.sound.stop();
+        }
     }
 
     animate( camera ) {

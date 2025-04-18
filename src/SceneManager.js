@@ -33,12 +33,14 @@ class SceneManager {
 
         this.currentScene = newScene;
         this.rootScene.add( this.currentScene.group );
+        this.currentScene.playSound();
     }
 
     unloadScene() {
         if ( this.currentScene ) {
             this.rootScene.remove( this.currentScene.group );
             this.currentScene.unload();
+            this.currentScene.stopSound();
             this.currentScene = null;
         }
     }

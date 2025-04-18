@@ -6,9 +6,11 @@ import SceneManager from './src/SceneManager.js';
 import { createVolumetricPostProcessing } from './src/objects/VolumetricFog.js';
 import { onKeyDown, onKeyUp, onMouseMove, onMouseClick, updateKeyboardMovement, updateMouseMovement } from './src/Input.js';
 import { initGUI } from './src/GUI.js';
-import { LightingTestScene } from './src/scenes/LightingTestScene.js';
 import { BeyondProductsScene } from './src/scenes/BeyondProductsScene.js';
 import { particleSystemInit, updateParticleSystem } from './src/ParticleSystem.js';
+import { LobbyScene } from './src/scenes/LobbyScene.js';
+import { BeyondSensesScene } from './src/scenes/BeyondSensesScene.js';
+import { BeyondSpacesScene } from './src/scenes/BeyondSpacesScene.js';
 
 let camera, postProcessing;
 
@@ -39,12 +41,14 @@ function init() {
 
     // Initialize SceneManager and add scenes
     const scene = new THREE.Scene(); // Root container for 3D objects
-    // scene.background = new THREE.Color( 0x000000 );
+    scene.background = new THREE.Color( 0x000000 );
 
     SceneManager.init( scene );
-    SceneManager.addScene( 'test', new LightingTestScene( listener ) );
-    SceneManager.addScene( 'dummy', new BeyondProductsScene() );
-    SceneManager.loadScene( 'test' );
+    SceneManager.addScene( 'lobby', new LobbyScene( listener ) );
+    SceneManager.addScene( 'products', new BeyondProductsScene( listener ) );
+    SceneManager.addScene( 'senses', new BeyondSensesScene( listener ) );
+    SceneManager.addScene( 'spaces', new BeyondSpacesScene( listener ) );
+    SceneManager.loadScene( 'lobby' );
 
     particleSystemInit( scene );
 

@@ -9,6 +9,29 @@ let spotLightCount = 0;
 let directionalLightCount = 0;
 
 export function initGUI() {
+    // Scene panel
+    
+    const loadScene = {
+        loadLobby: function() {
+            SceneManager.loadScene( 'lobby' );
+        },
+        loadBeyondProducts: function() {
+            SceneManager.loadScene( 'products' );
+        },
+        loadBeyondSenses: function() {
+            SceneManager.loadScene( 'senses' );
+        },
+        loadBeyondSpaces: function() {
+            SceneManager.loadScene( 'spaces' );
+        }
+    };
+
+    const scenes = gui.addFolder( 'Scenes' ).open();
+    scenes.add( loadScene, 'loadLobby' ).name( 'Lobby' );
+    scenes.add( loadScene, 'loadBeyondProducts' ).name( 'Beyond Products' );
+    scenes.add( loadScene, 'loadBeyondSenses' ).name( 'Beyond Senses' );
+    scenes.add( loadScene, 'loadBeyondSpaces' ).name( 'Beyond Spaces' );
+
     // Volumetric fog panel
 
     const volumetricParams = {
@@ -16,7 +39,7 @@ export function initGUI() {
         denoise: true
     };
 
-    const rayMarching = gui.addFolder( 'Ray Marching' ).open();
+    const rayMarching = gui.addFolder( 'Ray Marching' ).close();
     rayMarching.add( volumetricParams, 'resolution', .1, .5 ).onChange( ( resolution ) => {
         volumetricPass.setResolution( resolution );
     } );
@@ -25,7 +48,7 @@ export function initGUI() {
 
     // Lighting panel
 
-    const myObject = {
+    const addLight = {
         addPointLight: function() { 
             const pointLight = SceneManager.getCurrentScene().addPointLight( [ 0, 3, 0 ], 0xf9bb50, 3, 100 );
             pointLightCount += 1;
@@ -43,9 +66,9 @@ export function initGUI() {
         }
     };
     
-    gui.add( myObject, 'addPointLight' ).name( 'Add PointLight' );
-    gui.add( myObject, 'addSpotLight' ).name( 'Add SpotLight' );
-    gui.add( myObject, 'addDirectionalLight' ).name( 'Add DirectionalLight' );
+    gui.add( addLight, 'addPointLight' ).name( 'Add PointLight' );
+    gui.add( addLight, 'addSpotLight' ).name( 'Add SpotLight' );
+    gui.add( addLight, 'addDirectionalLight' ).name( 'Add DirectionalLight' );
 }
 
 function addPointLightFolder( pointLight, title ) {

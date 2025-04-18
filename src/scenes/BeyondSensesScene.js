@@ -1,16 +1,21 @@
-import { BaseScene } from "./BaseScene.js";
-import { loadObjModel } from '../utils/MeshUtils.js'
+import * as THREE from 'three';
+
+import { BaseScene } from './BaseScene.js'
+import { loadGltfModel } from '../MeshUtils.js';
 
 export class BeyondSensesScene extends BaseScene {
-    constructor() {
-        super();
+    constructor( listener ) {
+        super( listener );
 
         this.load();
     }
 
     load() {
-        loadObjModel( './assets/model/Gates_Anita.obj' )
+        // Scene model
+        loadGltfModel( './assets/model/beyond_senses.glb' )
         .then( ( model ) => {
+            model.castShadow = true;
+            
             this.group.add( model );
         } );
     }
