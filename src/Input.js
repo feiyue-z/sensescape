@@ -1,9 +1,13 @@
 import * as THREE from 'three';
 
-const STEP = 0.1;
 const keyMap = new Map();
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
+
+const STEP = 0.005;
+const ROTATION_SENSITIVITY = 0.3;
+
+let targetRotationY = 0.0;
 
 export function onKeyDown( event ) {
     console.log( `Key pressed: ${ event.key }.` );
@@ -19,6 +23,15 @@ export function updateKeyboardMovement( camera ) {
     if ( keyMap.get( 'KeyS' ) ) camera.translateZ(  STEP );
     if ( keyMap.get( 'KeyA' ) ) camera.translateX( -STEP );
     if ( keyMap.get( 'KeyD' ) ) camera.translateX(  STEP );
+}
+
+export function onMouseMove( event ) {
+    const normalizedX = ( event.clientX / window.innerWidth ) * 2 - 1;
+    targetRotationY = normalizedX * Math.PI; // Rotate based on mouse X position
+}
+
+export function updateMouseMovement( camera ) {
+    if ( keyMap.get( 'ShiftLeft' )) camera.rotation.y = targetRotationY * ROTATION_SENSITIVITY;
 }
 
 export function onMouseClick( event, camera ) {
