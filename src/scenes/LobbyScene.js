@@ -14,7 +14,7 @@ export class LobbyScene extends BaseScene {
         // Scene model
         loadGltfModel( './assets/model/lobby.glb' )
         .then( ( model ) => {
-            model.traverse(( child ) => {
+            model.traverse( ( child ) => {
                 if ( child.isMesh ) {
                     child.material.side = THREE.DoubleSide;
                 }

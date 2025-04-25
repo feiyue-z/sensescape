@@ -5,7 +5,8 @@ const raycaster = new THREE.Raycaster();
 const prevMouse = new THREE.Vector2();
 const mouseNDC = new THREE.Vector2();
 
-const NAVIGATE_STEP = 0.02;
+// const NAVIGATE_STEP = 0.02;
+const NAVIGATE_STEP = 0.002;
 const ROTATION_SENSITIVITY = 0.001;
 
 let targetRotationX = 0.0, targetRotationY = 0.0;

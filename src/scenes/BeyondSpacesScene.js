@@ -14,7 +14,7 @@ export class BeyondSpacesScene extends BaseScene {
         // Scene model
         loadGltfModel( './assets/model/beyond_spaces.glb' )
         .then( ( model ) => {
-            model.traverse(( child ) => {
+            model.traverse( ( child ) => {
                 if ( child.isMesh ) {
                     child.material.side = THREE.DoubleSide;
                 }

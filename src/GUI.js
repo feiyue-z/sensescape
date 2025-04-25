@@ -10,7 +10,7 @@ let directionalLightCount = 0;
 
 export function initGUI() {
     // Scene panel
-    
+
     const loadScene = {
         loadLobby: function() {
             SceneManager.loadScene( 'lobby' );
