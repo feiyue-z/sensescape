@@ -12,7 +12,7 @@ export class BeyondSpacesScene extends BaseScene {
 
     load() {
         // Scene model
-        loadGltfModel( './assets/model/beyond_spaces.glb' )
+        loadGltfModel( '/assets/model/beyond_spaces.glb' )
         .then( ( model ) => {
             model.traverse( ( child ) => {
                 if ( child.isMesh ) {

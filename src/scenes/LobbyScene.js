@@ -12,7 +12,7 @@ export class LobbyScene extends BaseScene {
 
     load() {
         // Scene model
-        loadGltfModel( './assets/model/lobby.glb' )
+        loadGltfModel( '/assets/model/lobby.glb' )
         .then( ( model ) => {
             model.traverse( ( child ) => {
                 if ( child.isMesh ) {

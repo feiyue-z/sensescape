@@ -15,7 +15,7 @@ export class BeyondProductsScene extends BaseScene {
 
     load() {
         // Scene model
-        loadGltfModel( './assets/model/beyond_products.glb' )
+        loadGltfModel( '/assets/model/beyond_products.glb' )
         .then( ( model ) => {
             const box = new THREE.Box3().setFromObject(model);
             const center = new THREE.Vector3();

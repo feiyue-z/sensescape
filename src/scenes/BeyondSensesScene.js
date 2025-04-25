@@ -24,7 +24,7 @@ export class BeyondSensesScene extends BaseScene {
         this.group.add( floor );
 
         // Scene model
-        loadGltfModel( './assets/model/beyond_senses.glb' )
+        loadGltfModel( '/assets/model/beyond_senses.glb' )
         .then( ( model ) => {
             // const box = new THREE.Box3().setFromObject(model);
             // const center = new THREE.Vector3();
