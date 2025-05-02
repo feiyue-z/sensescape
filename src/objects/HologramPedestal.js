@@ -1,7 +1,11 @@
 import * as THREE from 'three';
 
 import { NodeMaterial } from 'three/webgpu';
-import { float, vec2, vec4, uv, clamp, add, sub, mul, div, fract, normalize, sin, cos, floor, time, mix } from 'three/tsl';
+import { float, vec2, vec4, uv, clamp, add, sub, mul, div, fract, normalize, sin, cos, floor, time, mix, texture } from 'three/tsl';
+
+// somewhere during setup – do this ONCE, not every frame
+const texLoader   = new THREE.TextureLoader();
+const pedestalTex = texLoader.load( 'assets/texture/hologram_texture.png' );   // use your own path
 
 export default class HologramPedestal extends THREE.Mesh {
     constructor( size ) {
@@ -23,7 +27,7 @@ export default class HologramPedestal extends THREE.Mesh {
             const scanline = clamp(
                 add(
                     float( 0.95 ),
-                    mul( float( 0.05 ), cos( mul( float( 3.14 ), mul( add( vUv.y, mul( float( 0.008 ), time ) ), float( 240.0 ) ) ) ) )
+                    mul( float( 0.05 ), cos( mul( float( 3.14 ), mul( add( vUv.y, mul( float( 0.008 ), time ) ), float( 60.0 ) ) ) ) )
                 ),
                 float( 0.0 ),
                 float( 1.0 )
@@ -32,7 +36,7 @@ export default class HologramPedestal extends THREE.Mesh {
             // Grille effect
             const grille = add(
                 float( 0.85 ),
-                mul( float( 0.15 ), clamp( mul( float( 1.5 ), cos( mul( float( 3.14 ), mul( vUv.x, float( 640.0) ) ) ) ), float( 0.0 ), float( 1.0 ) ) )
+                mul( float( 0.15 ), clamp( mul( float( 1.5 ), cos( mul( float( 3.14 ), mul( vUv.x, float( 160.0) ) ) ) ), float( 0.0 ), float( 1.0 ) ) )
             );
 
             //////
@@ -104,10 +108,22 @@ export default class HologramPedestal extends THREE.Mesh {
             //     vol = add( vol, mul( fbm( pos.xz ), float( 0.05 ) ) );
             //     s = add( s, float( 0.1 ) );
             // }
-            
-            const finalColor = mul( color, mul( scanline, mul( grille, float( 1.2 ) ) ) );
 
-            material.fragmentNode = vec4( finalColor, alpha );
+            // Convert the loaded THREE.Texture into a node, then sample it
+            const texSample = texture( pedestalTex, vUv );   // returns vec4
+
+            // combine: texture tint → scanline → grille → overall tint
+            const hologram = mul(
+                texSample.rgb,                 // your texture colours
+                mul( color, mul( scanline, grille ) )
+            );
+
+            // preserve texture alpha, attenuated by our own alpha constant
+            material.fragmentNode = vec4( hologram, mul( texSample.a, alpha ) );
+            
+            // const finalColor = mul( color, mul( scanline, mul( grille, float( 1.2 ) ) ) );
+
+            // material.fragmentNode = vec4( finalColor, alpha );
         }
 
         updateFragmentNode();
@@ -115,27 +131,3 @@ export default class HologramPedestal extends THREE.Mesh {
         super( geometry, material );
     }
 }
-
-function rand( n ) {
-
-}
-
-// export default class X {
-//     constructor() {
-//         loadGltfModel( './assets/model/untitled.glb' )
-//         .then( ( model ) => {
-//             console.log( model );
-//             // model.rotation.y = Math.PI / 2;
-//             model.castShadow = true;
-//             this.group.add( model );
-//         } );
-        
-
-//     }
-
-//     update() {
-        
-//         mesh.rotation.x += 0.005;
-//         mesh.rotation.y += 0.005;
-//     }
-// }

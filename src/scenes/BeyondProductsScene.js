@@ -17,7 +17,7 @@ export class BeyondProductsScene extends BaseScene {
         // Scene model
         loadGltfModel( '/assets/model/beyond_products.glb' )
         .then( ( model ) => {
-            const box = new THREE.Box3().setFromObject(model);
+            const box = new THREE.Box3().setFromObject( model );
             const center = new THREE.Vector3();
             box.getCenter( center );
             
@@ -36,5 +36,8 @@ export class BeyondProductsScene extends BaseScene {
 
         // Sound
         this.loadSound( './assets/audio/products_demo.mp3' );
+
+        // const portal_1 = new PortalHitbox();
+
     }
 }

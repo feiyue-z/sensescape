@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import { BaseScene } from './BaseScene.js'
 import { loadGltfModel } from '../MeshUtils.js';
 import { createVolumetricFog } from '../objects/VolumetricFog.js';
+import HologramPedestal from '../objects/HologramPedestal.js';
+import { SpotLight } from 'three/webgpu';
 
 export class BeyondSensesScene extends BaseScene {
     constructor( listener ) {
@@ -45,5 +47,31 @@ export class BeyondSensesScene extends BaseScene {
 
             this.group.add( model );
         } );
+
+        // const test = new HologramPedestal( [ 1, 1, 1 ] );
+        // test.position.set( 0, 1, -1);
+        // this.group.add( test );
+
+        const holo = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
+        holo.position.set( 0, 0.55, -6.8 );
+        this.group.add( holo );
+
+        // const test = new SpotLight( 0x00ffff, 100 );
+        // test.position.set( 0, 0, -6.8 );
+        // test.intensity = 5;
+        // this.group.add( test );
+
+        // const test = new SpotLight( 0x00ffff, 100 );
+        // test.position.set( 0, 0, -6.8 );
+        // test.target.position.set(0, 1, -6.8);
+        // test.castShadow = true
+        // test.angle = Math.PI / 6;
+        // test.decay = 2;
+        // test.penumbra = 1;
+        // test.distance = 5;
+        // this.group.add( test );
+        // this.group.add( test.target );
+
+        this.addSpotLight2( [ 0, 0.2, -6.8 ], 0x621fff, 5, 1,  Math.PI / 3, 1, 2 );
     }
 }

@@ -55,7 +55,7 @@ export function initGUI() {
             addPointLightFolder( pointLight, `PointLight ${ pointLightCount }` );
         },
         addSpotLight: function() {
-            const spotLight = SceneManager.getCurrentScene().addSpotLight( [ 0, 3, 0 ], 0xf9bb50, 3, 100, 0.5, 1, 2 );
+            const spotLight = SceneManager.getCurrentScene().addSpotLight2( [ 0, 3, 0 ], 0xf9bb50, 3, 100, 0.5, 1, 2 );
             spotLightCount += 1;
             addSpotLightFolder( spotLight, `SpotLight ${ spotLightCount }` );
         },

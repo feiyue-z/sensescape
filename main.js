@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import { WebGPURenderer } from "three/webgpu";
-// import { VRButton } from 'three/addons/webxr/VRButton.js';
 
 import SceneManager from './src/SceneManager.js';
 import { createVolumetricPostProcessing } from './src/objects/VolumetricFog.js';
@@ -13,6 +12,8 @@ import { BeyondSensesScene } from './src/scenes/BeyondSensesScene.js';
 import { BeyondSpacesScene } from './src/scenes/BeyondSpacesScene.js';
 
 let camera, postProcessing;
+
+export const mixers = [];
 
 init();
 
@@ -37,7 +38,6 @@ function init() {
 
     // Append DOM elements
     document.body.appendChild( renderer.domElement );
-    // document.body.appendChild( VRButton.createButton( renderer ) );
 
     // Initialize SceneManager and add scenes
     const scene = new THREE.Scene(); // Root container for 3D objects
@@ -54,7 +54,7 @@ function init() {
 
     //
     postProcessing = createVolumetricPostProcessing( renderer, scene, camera );
-    // console.log(postProcessing)
+    console.log(postProcessing)
 
     // Listen to resize event
     window.addEventListener( 'resize', () => {
@@ -71,16 +71,10 @@ function init() {
     document.addEventListener( 'mousemove', ( event ) => onMouseMove( event ) );
     // document.addEventListener( 'click', ( event ) => onMouseClick( event, camera ) );
 
-    // Listen to VR controller event
-    // const controller = renderer.xr.getController( 0 );
-    // controller.addEventListener( 'selectstart', ( event ) => onSelectStart( event ) );
-    // controller.addEventListener( 'selectend', ( event ) => onSelectEnd( event ) );
-    // scene.add( controller );
-
     initGUI();
 }
 
-// const clock = new THREE.Clock();
+const clock = new THREE.Clock();
 
 function animate() {
     // const deltaTime = clock.getDelta();
@@ -89,6 +83,9 @@ function animate() {
     updateKeyboardMovement( camera );
     updateMouseMovement( camera );
     updateParticleSystem();
+
+    const delta = clock.getDelta();
+    mixers.forEach( ( mixer ) => mixer.update( delta ) );
 
     SceneManager.animate( camera );
     postProcessing.render();

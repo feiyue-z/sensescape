@@ -89,6 +89,21 @@ export class BaseScene {
     
         return spotLight;
     }
+
+    addSpotLight2( position, color, intensity, distance, angle, penumbra, decay = 2 ) {
+        const spotLight = new THREE.SpotLight( color, intensity, distance, angle, penumbra, decay );
+        spotLight.castShadow = true;
+
+        const [ x, y, z ] = position;
+        spotLight.position.set( x, 0.15, z );
+        spotLight.target.position.set( x, 1, z );
+        spotLight.layers.enable( LAYER_VOLUMETRIC_LIGHTING );
+    
+        this.group.add( spotLight );
+        this.group.add( spotLight.target );
+    
+        return spotLight;
+    }
     
     addDirectionalLight( position, color, intensity ) {
         const directionalLight = new THREE.DirectionalLight( color, intensity );

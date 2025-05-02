@@ -5,8 +5,8 @@ const raycaster = new THREE.Raycaster();
 const prevMouse = new THREE.Vector2();
 const mouseNDC = new THREE.Vector2();
 
-// const NAVIGATE_STEP = 0.02;
-const NAVIGATE_STEP = 0.002;
+const NAVIGATE_STEP = 0.02;
+// const NAVIGATE_STEP = 0.002;
 const ROTATION_SENSITIVITY = 0.001;
 
 let targetRotationX = 0.0, targetRotationY = 0.0;
@@ -43,6 +43,8 @@ export function updateKeyboardMovement( camera ) {
     if ( keyMap.get( 'KeyS' ) ) camera.translateZ(  NAVIGATE_STEP );
     if ( keyMap.get( 'KeyA' ) ) camera.translateX( -NAVIGATE_STEP );
     if ( keyMap.get( 'KeyD' ) ) camera.translateX(  NAVIGATE_STEP );
+    if ( keyMap.get( 'KeyR' ) ) camera.translateY(  NAVIGATE_STEP );
+    if ( keyMap.get( 'KeyC' ) ) camera.translateY( -NAVIGATE_STEP );
 }
 
 export function onMouseMove( event ) {
