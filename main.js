@@ -11,9 +11,13 @@ import { LobbyScene } from './src/scenes/LobbyScene.js';
 import { BeyondSensesScene } from './src/scenes/BeyondSensesScene.js';
 import { BeyondSpacesScene } from './src/scenes/BeyondSpacesScene.js';
 
-let camera, postProcessing;
+import { ParticleTestScene } from './src/scenes/ParticleTestScene.js';
+
+let camera, postProcessing, renderer;
 
 export const mixers = [];
+
+const clock = new THREE.Clock();
 
 init();
 
@@ -49,13 +53,14 @@ function init() {
     SceneManager.addScene( 'products', new BeyondProductsScene( listener ) );
     SceneManager.addScene( 'senses', new BeyondSensesScene( listener ) );
     SceneManager.addScene( 'spaces', new BeyondSpacesScene( listener ) );
-    SceneManager.loadScene( 'lobby' );
+
+    SceneManager.addScene('particles', new ParticleTestScene(listener));
+
+    SceneManager.loadScene('lobby');
 
     particleSystemInit( scene );
-
-    //
+    
     postProcessing = createVolumetricPostProcessing( renderer, scene, camera );
-    console.log(postProcessing)
 
     // Listen to resize event
     window.addEventListener( 'resize', () => {
@@ -75,6 +80,7 @@ function init() {
     initGUI();
 }
 
+
 const clock = new THREE.Clock();
 
 let lastcam = new THREE.Vector3();
@@ -90,11 +96,13 @@ function animate() {
     
     updateKeyboardMovement( camera );
     updateMouseMovement( camera );
-    updateParticleSystem();
+    updateParticleSystem(camera);
 
     const delta = clock.getDelta();
     mixers.forEach( ( mixer ) => mixer.update( delta ) );
 
     SceneManager.animate( camera );
-    postProcessing.render();
+    if (postProcessing) {
+        postProcessing.render();
+    }
 }
