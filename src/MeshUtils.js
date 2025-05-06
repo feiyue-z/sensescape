@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 // import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 // import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
 export function loadGltfModel( path, options = {} ) {
     const {
@@ -17,11 +18,11 @@ export function loadGltfModel( path, options = {} ) {
                 gltf.scene.position.set( ...position );
                 gltf.scene.scale.set( ...scale );
 
-                gltf.scene.traverse((child) => {
-                    if (child.isMesh) {
-                        child.material = new THREE.MeshStandardMaterial({ map: child.material.map });
+                gltf.scene.traverse( ( child ) => {
+                    if ( child.isMesh ) {
+                        child.material = new THREE.MeshStandardMaterial( { map: child.material.map } );
                     }
-                });
+                } );
 
                 resolve( gltf.scene );
             },
@@ -33,28 +34,36 @@ export function loadGltfModel( path, options = {} ) {
     } );
 }
 
-// export function loadObjModel( objPath ) {
-//     return new Promise( ( resolve, reject ) => {
-//         const objLoader = new OBJLoader();
-//         objLoader.load( objPath, ( object ) => {
-//             resolve( object );
-//         }, undefined, reject );
-//     } );
-// }
+export function loadDracoGltfModel( path, options = {} ) {
+    const {
+        position = [ 0, 0, 0 ],
+        scale = [ 1, 1, 1 ]
+    } = options;
 
-// export function loadObjModelWithMtl( objPath, mtlPath ) {
-//     return new Promise( ( resolve, reject ) => {
-//         const mtlLoader = new MTLLoader();
+    return new Promise( ( resolve, reject ) => {
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath( 'https://www.gstatic.com/draco/v1/decoders/' );
 
-//         mtlLoader.load( mtlPath, ( materials ) => {
-//             materials.preload();
+        const loader = new GLTFLoader();
+        loader.setDRACOLoader( dracoLoader );
+        loader.load(
+            path,
+            ( gltf ) => {
+                gltf.scene.position.set( ...position );
+                gltf.scene.scale.set( ...scale );
 
-//             const objLoader = new OBJLoader();
-//             objLoader.setMaterials( materials );
+                gltf.scene.traverse( ( child ) => {
+                    if ( child.isMesh ) {
+                        child.material = new THREE.MeshStandardMaterial( { map: child.material.map } );
+                    }
+                } );
 
-//             objLoader.load( objPath, ( object ) => {
-//                 resolve( object );
-//             }, undefined, reject );
-//         }, undefined, reject );
-//     } );
-// }
+                resolve( gltf.scene );
+            },
+            undefined,
+            ( error ) => {
+                reject( error );
+            }
+        );
+    } );
+}
