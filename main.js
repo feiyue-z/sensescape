@@ -80,9 +80,6 @@ function init() {
     initGUI();
 }
 
-
-const clock = new THREE.Clock();
-
 let lastcam = new THREE.Vector3();
 
 function animate() {
