@@ -29,7 +29,7 @@ export function createVolumetricFog() {
         return smokeAmount.mix( 1, density );
     } );
     
-    const volumetricMesh = new THREE.Mesh( new THREE.BoxGeometry( 20, 10, 20 ), volumetricMaterial );
+    const volumetricMesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 50, 100 ), volumetricMaterial );
     volumetricMesh.receiveShadow = true;
     volumetricMesh.position.y = 2;
     volumetricMesh.layers.disableAll();

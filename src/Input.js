@@ -5,7 +5,7 @@ const raycaster = new THREE.Raycaster();
 const prevMouse = new THREE.Vector2();
 const mouseNDC = new THREE.Vector2();
 
-const NAVIGATE_STEP = 0.02;
+const NAVIGATE_STEP = 0.1;
 // const NAVIGATE_STEP = 0.002;
 const ROTATION_SENSITIVITY = 0.001;
 
@@ -24,8 +24,10 @@ function updateTargetRotation( event ) {
     prevMouse.y = event.clientY;
 
     if ( keyMap.get( 'ShiftLeft' ) ) {
-        targetRotationX += dy;
-        targetRotationY += dx;
+        // targetRotationX += dy;
+        // targetRotationY += dx;
+        targetRotationX = dy;
+        targetRotationY = dx;
     }
 }
 
@@ -55,8 +57,8 @@ export function onMouseMove( event ) {
 export function updateMouseMovement( camera ) {
     // if ( keyMap.get( 'ShiftLeft' )) camera.rotation.y = targetRotationY * ROTATION_SENSITIVITY;
     if ( keyMap.get( 'ShiftLeft' ) ) {
-        camera.rotation.x = targetRotationX * ROTATION_SENSITIVITY;
-        camera.rotation.y = targetRotationY * ROTATION_SENSITIVITY;
+        // camera.rotation.x += targetRotationX * ROTATION_SENSITIVITY;
+        camera.rotation.y += targetRotationY * ROTATION_SENSITIVITY;
     }
 }
 

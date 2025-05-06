@@ -24,7 +24,8 @@ init();
 function init() {
     // Set up camera
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.01, 5000 );
-    camera.position.set( 0, 0.4, 0.5 );
+    camera.position.set( -9.15, 20.89, 0.21 );
+    camera.rotation.set( 0, -Math.PI / 2, 0 );
 
     // Add audio listener
     const listener = new THREE.AudioListener();
@@ -79,10 +80,20 @@ function init() {
     initGUI();
 }
 
+
+const clock = new THREE.Clock();
+
+let lastcam = new THREE.Vector3();
+
 function animate() {
     // const deltaTime = clock.getDelta();
     // const elapsed = clock.getElapsedTime();
 
+    if ( !lastcam.equals( camera.position ) ) {
+        console.log( camera.position );
+        lastcam.copy( camera.position );
+    }
+    
     updateKeyboardMovement( camera );
     updateMouseMovement( camera );
     updateParticleSystem(camera);
