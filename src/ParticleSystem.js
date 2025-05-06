@@ -1,14 +1,41 @@
+// src/ParticleSystem.js
 import * as THREE from 'three';
+import Nebula, { SpriteRenderer } from 'three-nebula';
+import particleConfig from './particles/data2.js';
 
-const group = new THREE.Group();
+let nebula;
+let emitter;
+let spriteRenderer;
 
-export function particleSystemInit( scene ) {
-    // const geometry = new THREE.SphereGeometry( 1, 32, 32 ); // radius, width segments, height segments
-    // const material = new THREE.MeshStandardMaterial( { color: 0x0077ff } );
-    // const sphere = new THREE.Mesh( geometry, material );
-    // scene.add( sphere );
+export async function particleSystemInit(scene) {
+  const system = await Nebula.fromJSONAsync(particleConfig, THREE);
+  const renderer = new SpriteRenderer(scene, THREE);
+  nebula = system.addRenderer(renderer);
+
+  emitter = system.emitters[0];
 }
 
-export function updateParticleSystem() {
+export function updateParticleSystem(camera) {
+    if (!nebula || !emitter) return;
 
+    const camPos = new THREE.Vector3();
+    const camDir = new THREE.Vector3();
+    const camUp = new THREE.Vector3();
+
+    camera.getWorldPosition(camPos);
+    camera.getWorldDirection(camDir);
+    camera.getWorldDirection(camDir);
+    camera.getWorldDirection(camUp).cross(camDir); // Get "up" vector relative to direction
+
+    const forwardOffset = camDir.multiplyScalar(0.2); // emit behind
+    const downOffset = new THREE.Vector3(0, -0.08, 0);   // slightly below
+
+    const emitterPos = camPos.clone().add(forwardOffset).add(downOffset);
+
+    emitter.position.copy(emitterPos);
+    nebula.update();
+}
+
+export function getParticleSystemGroup() {
+    return spriteRenderer?.group || null;
 }

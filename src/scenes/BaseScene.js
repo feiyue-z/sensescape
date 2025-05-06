@@ -2,6 +2,8 @@ import * as THREE from 'three';
 
 import { LAYER_VOLUMETRIC_LIGHTING } from '../objects/VolumetricFog.js';
 
+import { getParticleSystemGroup } from '../ParticleSystem.js';
+
 export class BaseScene {
     constructor( listener ) {
         this.group = new THREE.Group(); // Holds all objects in the scene
@@ -9,7 +11,12 @@ export class BaseScene {
         this.sound = new THREE.Audio( listener );
     }
 
-    load() {}
+    load() {
+        const particleGroup = getParticleSystemGroup();
+        if (particleGroup) {
+            this.group.add(particleGroup); // Attach particles to scene
+        }
+    }
 
     unload() {
         // Clean up resources
