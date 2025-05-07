@@ -24,6 +24,7 @@ export class LobbyScene extends BaseScene {
                 }
             } );
 
+            // model.scale.set(0.5,0.5,0.5);
             this.group.add( model );
         } );
 

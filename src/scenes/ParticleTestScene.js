@@ -18,9 +18,6 @@ export class ParticleTestScene extends BaseScene {
 
     this.group.add(grid);
     this.group.add(light);
-
-    // Init Nebula particle system
-    await particleSystemInit(this.group);
   }
 
   animate(camera) {

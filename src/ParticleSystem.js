@@ -13,6 +13,9 @@ export async function particleSystemInit(scene) {
   nebula = system.addRenderer(renderer);
 
   emitter = system.emitters[0];
+
+  emitter.useWorldSpace = false;
+  spriteRenderer = renderer;
 }
 
 export function updateParticleSystem(camera) {
@@ -24,15 +27,13 @@ export function updateParticleSystem(camera) {
 
     camera.getWorldPosition(camPos);
     camera.getWorldDirection(camDir);
-    camera.getWorldDirection(camDir);
-    camera.getWorldDirection(camUp).cross(camDir); // Get "up" vector relative to direction
-
-    const forwardOffset = camDir.multiplyScalar(0.2); // emit behind
-    const downOffset = new THREE.Vector3(0, -0.08, 0);   // slightly below
-
+    
+    const forwardOffset = camDir.multiplyScalar(0.2);
+    const downOffset = new THREE.Vector3(0, -0.08, 0);
     const emitterPos = camPos.clone().add(forwardOffset).add(downOffset);
 
     emitter.position.copy(emitterPos);
+    emitter.rotation.copy(camera.rotation);
     nebula.update();
 }
 

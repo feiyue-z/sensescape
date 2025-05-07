@@ -8,10 +8,10 @@ export default {
         life: null,
         cache: { totalEmitTimes: null, life: null },
         rate: {
-          particlesMin: 2,
-          particlesMax: 4,
+          particlesMin: 4,
+          particlesMax: 8,
           perSecondMin: 0.01,
-          perSecondMax: 0.02
+          perSecondMax: 0.05
         },
         position: { x: 0, y: 0, z: 0 },
         rotation: { x: 0, y: 0, z: 0 },
@@ -24,7 +24,7 @@ export default {
           {
             id: "51ca9452-3d8b-11e9-a1e8-4785d9606b75",
             type: "Life",
-            properties: { min: 2, max: 4, isEnabled: true }
+            properties: { min: 1.5, max: 3, isEnabled: true }
           },
           {
             id: "51ca9453-3d8b-11e9-a1e8-4785d9606b75",
@@ -37,7 +37,7 @@ export default {
           {
             id: "51ca9454-3d8b-11e9-a1e8-4785d9606b75",
             type: "Radius",
-            properties: { width: 0.012, height: 0.04, isEnabled: true }
+            properties: { width: 0.015, height: 0.05, isEnabled: true }
           },
           {
             id: "51ca9455-3d8b-11e9-a1e8-4785d9606b75",
@@ -45,7 +45,7 @@ export default {
             properties: {
               radius: 0.05,
               x: 0,
-              y: 5,
+              y: 1,
               z: 0,
               theta: 900,
               isEnabled: true
@@ -67,7 +67,7 @@ export default {
             id: "51ca9457-3d8b-11e9-a1e8-4785d9606b75",
             type: "Color",
             properties: {
-              colorA: "#22004f",
+              colorA: "#1c0040",
               colorB: "#0029FF",
               life: null,
               easing: "easeOutCubic"
@@ -79,17 +79,6 @@ export default {
             properties: {
               scaleA: 1,
               scaleB: 0.5,
-              life: null,
-              easing: "easeLinear"
-            }
-          },
-          {
-            id: "51ca9459-3d8b-11e9-a1e8-4785d9606b75",
-            type: "Force",
-            properties: {
-              fx: 0,
-              fy: 0.025,
-              fz: 0,
               life: null,
               easing: "easeLinear"
             }
@@ -113,19 +102,6 @@ export default {
               driftY: 0.05,
               driftZ: 0.05,
               delay: 1,
-              life: null,
-              easing: "easeLinear"
-            }
-          },
-          {
-            id: "51ca945c-3d8b-11e9-a1e8-4785d9606b75",
-            type: "Spring",
-            properties: {
-              x: 0,
-              y: 0,
-              z: 0,
-              spring: 0.01,
-              friction: 1,
               life: null,
               easing: "easeLinear"
             }
