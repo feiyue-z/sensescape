@@ -8,8 +8,8 @@ export default {
         life: null,
         cache: { totalEmitTimes: null, life: null },
         rate: {
-          particlesMin: 4,
-          particlesMax: 8,
+          particlesMin: 1,
+          particlesMax: 5,
           perSecondMin: 0.01,
           perSecondMax: 0.05
         },
