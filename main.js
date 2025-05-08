@@ -24,8 +24,8 @@ init();
 function init() {
     // Set up camera
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.01, 5000 );
-    camera.position.set( 0, 0.4, 0.5 );
-    // camera.position.set( -9.15, 20.89, 0.21 );
+    // camera.position.set( 0, 0.4, 0.5 );
+    camera.position.set( -9.15, 20.89, 0.21 );
     camera.rotation.set( 0, -Math.PI / 2, 0 );
 
     // Add audio listener
@@ -57,7 +57,9 @@ function init() {
 
     SceneManager.addScene('particles', new ParticleTestScene(listener));
 
-    SceneManager.loadScene('particles');
+    // SceneManager.loadScene('particles');
+    // SceneManager.loadScene('spaces');
+    SceneManager.loadScene('lobby');
 
     particleSystemInit( scene );
     

@@ -74,7 +74,6 @@ export class BeyondSpacesScene extends BaseScene {
         // Portal
         this.portals.push( new PortalHitbox( [ 0, 0.9, -4.7 ], [ 6, 12, 6 ], 'lobby', [ -9.15, 20.89, 0.21 ], [ 0, -Math.PI / 2, 0 ] ) ); 
 
-        // - For test only
         this.portals.forEach( ( portal ) => {
             portal.scale.set( 0.15, 0.15, 0.15 );
             this.group.add( portal );
