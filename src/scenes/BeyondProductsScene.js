@@ -108,10 +108,58 @@ export class BeyondProductsScene extends BaseScene {
 
         const rocksData = [
             {
-              image: '/assets/works/ellen_fritz.png',
-              position: new THREE.Vector3(-21.7, 1, -36),
-              rotation: new THREE.Euler(0, -Math.PI, 0),
-              scale: new THREE.Vector3(0.2, 0.2, 0.2)
+              image: '/assets/works/evette_niche.png',
+              position: new THREE.Vector3(-21, -1, -46),
+              rotation: new THREE.Euler(0, -6 * Math.PI / 7, 0),
+              scale: new THREE.Vector3(1, 1, 1)
+            }, 
+            {
+                image: '/assets/works/caleb_wu.png',
+                position: new THREE.Vector3(-15, -1, -47.5),
+                rotation: new THREE.Euler(0, - 8 * Math.PI / 7, 0),
+                scale: new THREE.Vector3(1, 1, 1)
+            },
+            {
+                image: '/assets/works/selina_xie.png',
+                position: new THREE.Vector3(-80, -0.5, -125),
+                rotation: new THREE.Euler(0, - 9 * Math.PI / 7, 0),
+                scale: new THREE.Vector3(1.5, 1.5, 1.5)
+            },
+            {
+                image: '/assets/works/julia_daser.png',
+                position: new THREE.Vector3(-105, -0.5, -135),
+                rotation: new THREE.Euler(0, - 3 * Math.PI / 5, 0),
+                scale: new THREE.Vector3(1.5, 1.5, 1.5)
+            },
+            {
+                image: '/assets/works/harbor_bai.png',
+                position: new THREE.Vector3(-9, 1, -155),
+                rotation: new THREE.Euler(0, Math.PI / 2, 0),
+                scale: new THREE.Vector3(1.5, 1.5, 1.5)
+            },
+            {
+                image: '/assets/works/grace_park.png',
+                position: new THREE.Vector3(-36, 1, -168),
+                rotation: new THREE.Euler(0, - 3 * Math.PI / 5, 0),
+                scale: new THREE.Vector3(1.5, 1.5, 1.5)
+            },
+            {
+                image: '/assets/works/hansi_zhu.png',
+                position: new THREE.Vector3(-15, 1, -192),
+                rotation: new THREE.Euler(0, 3 * Math.PI / 4, 0),
+                scale: new THREE.Vector3(1.5, 1.5, 1.5)
+            }, 
+            {
+                image: '/assets/works/jewel.png',
+                position: new THREE.Vector3(82, 1, -124),
+                rotation: new THREE.Euler(0, Math.PI / 2, 0),
+                scale: new THREE.Vector3(1.5, 1.5, 1.5)
+            },
+            {
+                image: '/assets/works/katherine_bonsi.png',
+                position: new THREE.Vector3(70, 1, -132),
+                rotation: new THREE.Euler(0, Math.PI, 0),
+                scale: new THREE.Vector3(1.5, 1.5, 1.5)
             }
         ];
       

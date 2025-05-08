@@ -24,10 +24,12 @@ init();
 function init() {
     // Set up camera
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.01, 5000 );
-    // camera.position.set( 0, 0.5, 0.5 );
+    // camera.position.set( 0, 0.5, 0.5 ); // BEYOND SPACES TESTING
+
     camera.position.set( -9.15, 20.89, 0.21 );
-    // camera.position.set( -16, 1, -3.1 );
     camera.rotation.set( 0, -Math.PI / 2, 0 );
+
+    // camera.position.set( -16, 1, -3.1 ); // BEYOND PRODUCTS TESTING
 
     console.log(camera.position);
 
