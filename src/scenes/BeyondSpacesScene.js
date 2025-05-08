@@ -4,6 +4,7 @@ import { BaseScene } from './BaseScene.js';
 import { loadGltfModel } from '../MeshUtils.js';
 import { createVolumetricFog } from '../objects/VolumetricFog.js';
 import HologramPedestal from '../objects/HologramPedestal.js';
+import { PortalHitbox } from '../objects/PortalHitbox.js';
 
 export class BeyondSpacesScene extends BaseScene {
     constructor( listener ) {
@@ -69,5 +70,14 @@ export class BeyondSpacesScene extends BaseScene {
         this.addDirectionalLight( [ -3.18, 5.64, -13.5 ], 0xbcc2d7, 7 );
         this.addDirectionalLight( [ 7.68, -7.38, -27.24 ], 0x24abff, 4 );
         this.addDirectionalLight( [ -19.62, -5.1, -1.32 ], 0x6cb2f4, 3 );
+
+        // Portal
+        this.portals.push( new PortalHitbox( [ 0, 0.9, -4.7 ], [ 6, 12, 6 ], 'lobby', [ -9.15, 20.89, 0.21 ], [ 0, -Math.PI / 2, 0 ] ) ); 
+
+        // - For test only
+        this.portals.forEach( ( portal ) => {
+            portal.scale.set( 0.15, 0.15, 0.15 );
+            this.group.add( portal );
+        } );
     }
 }

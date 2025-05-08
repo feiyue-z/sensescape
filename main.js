@@ -96,8 +96,6 @@ function animate() {
     updateMouseMovement( camera );
     updateParticleSystem( camera );
 
-    console.log(camera.position);
-
     const delta = clock.getDelta();
     mixers.forEach( ( mixer ) => mixer.update( delta ) );
 

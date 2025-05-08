@@ -91,11 +91,12 @@ export class LobbyScene extends BaseScene {
         // Portal
         // const portal_1 = new PortalHitbox( [ 0, 0, 0 ] );
         // this.group.add( portal_1 );
-        this.portals.push( new PortalHitbox( [ -28, 22, -49 ], [ 6, 12, 6 ], 'products' ) ); 
-        this.portals.push( new PortalHitbox( [ 56, 22, 0 ], [ 6, 12, 6 ], 'senses' ) ); 
-        this.portals.push( new PortalHitbox( [ -29, 22, 51 ], [ 6, 12, 6 ], 'spaces' ) ); 
+        this.portals.push( new PortalHitbox( [ -28, 22, -49 ], [ 6, 12, 6 ], 'products', [ -16.4, -1.3, -5.3 ] ) ); 
+        this.portals.push( new PortalHitbox( [ 56, 22, 0 ], [ 6, 12, 6 ], 'senses', [ 0, 0.3, 1.5 ] ) ); 
+        this.portals.push( new PortalHitbox( [ -29, 22, 51 ], [ 6, 12, 6 ], 'spaces', [ 0, 0.9, 10 ] ) ); 
         // this.group.add( this.portals[0] );
 
+        // - For test only
         this.portals.forEach( ( portal ) => {
             this.group.add( portal );
         } );

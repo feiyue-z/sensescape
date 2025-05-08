@@ -8,6 +8,7 @@ import { SpotLight } from 'three/webgpu';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { mixers } from '../../main.js';
+import { PortalHitbox } from '../objects/PortalHitbox.js';
 
 export class BeyondSensesScene extends BaseScene {S
     constructor( listener ) {
@@ -167,5 +168,14 @@ export class BeyondSensesScene extends BaseScene {S
         // this.addSpotLight( [ 9.36, -0.54, 4.02 ], 0x8549d0, 500, 20, 0.631, 1, 2 );
         // this.addSpotLight( [ -4.38, -13.5, 19.32 ], 0xf9bb50, 500, 20, 0.402, 1, 1.707 );
         this.addSpotLight( [ 7.86, 0.15, -7.38 ], 0x76b5f9, 500, 100, 0.5, 1, 2 );
+
+        // Portal
+        this.portals.push( new PortalHitbox( [ 0, 0.4, -28 ], [ 6, 12, 6 ], 'lobby', [ -9.15, 20.89, 0.21 ], [ 0, -Math.PI / 2, 0 ] ) ); 
+
+        // - For test only
+        this.portals.forEach( ( portal ) => {
+            portal.scale.set( 0.1, 0.1, 0.1 );
+            this.group.add( portal );
+        } );
     }
 }
