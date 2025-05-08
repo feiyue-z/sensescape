@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import SceneManager from '../SceneManager';
 
-export class PortalHitbox extends THREE.Object3D{
+export class PortalHitbox extends THREE.Object3D {
     constructor( position, size, targetScene, targetCamPosition = [ 0, 0, 0 ], targetCamRotation = [ 0, 0, 0 ] ) {
         super();
 
@@ -13,6 +13,7 @@ export class PortalHitbox extends THREE.Object3D{
         this.geometry = new THREE.BoxGeometry( ...size );
         this.material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } ); 
         // this.material.visible = true;
+        // this.material = new THREE.MeshStandardMaterial( { color: 0xff0000 } ); 
         this.mesh = new THREE.Mesh( this.geometry, this.material );
 
         this.add( this.mesh ); // Add hitbox mesh to this Object3D object
@@ -28,7 +29,10 @@ export class PortalHitbox extends THREE.Object3D{
     }
 
     onCollision( camera ) {
-        SceneManager.loadScene( this.targetScene );
+        if ( this.targetScene !== '' ) {
+            SceneManager.loadScene( this.targetScene );
+        }
+        
         camera.position.set( ...this.targetCamPosition );
         camera.rotation.set( ...this.targetCamRotation );
     }

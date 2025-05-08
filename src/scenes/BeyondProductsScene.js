@@ -15,8 +15,8 @@ export class BeyondProductsScene extends BaseScene {
 
     load() {
         // Fog
-        const volumetricFog = new createVolumetricFog();
-        this.group.add( volumetricFog );
+        // const volumetricFog = new createVolumetricFog();
+        // this.group.add( volumetricFog );
 
         // Scene model
         loadGltfModel( '/assets/model/beyond_products.glb' )
@@ -59,5 +59,39 @@ export class BeyondProductsScene extends BaseScene {
         this.addPointLight( [ 25.44, 23.88, 7.86 ], 0xf9bb50, 67.5, 20, 2 );
         this.addPointLight( [ 7.08, 4.02, 21.6 ], 0xf9bb50, 10, 100, 2 );
         // this.addPointLight( [ 30, 3.3, 12.42 ], 0x964bd2, 23, 100, 2 );
+
+        // Portal
+
+        // - Landing island
+        this.portals.push( new PortalHitbox( [ -16.5, -1, -10.5 ], [ 6, 12, 6 ], '', [ -17, -2.8, -35 ] ) ); 
+        this.portals.push( new PortalHitbox( [ -16.5, -1.3, -1.4 ], [ 6, 12, 6 ], 'lobby', [ -9.15, 20.89, 0.21 ], [ 0, -Math.PI / 2, 0 ] ) ); 
+
+        // - Center island (starting from leftmost island, clock-wise)
+        this.portals.push( new PortalHitbox( [ -31, -2.8, -40 ], [ 6, 12, 6 ], '', [ -126, -1, -39 ],  [ 0, Math.PI / 2, 0 ] ) );
+        this.portals.push( new PortalHitbox( [ -26.8, -2.8, -49 ], [ 6, 12, 6 ], '', [ -79, -2, -111 ] ) );
+        this.portals.push( new PortalHitbox( [ -16.5, -2.8, -56.7 ], [ 6, 12, 6 ], '', [ -17.8, -0.7, -137 ] ) );
+        this.portals.push( new PortalHitbox( [ -6.6, -2.8, -46.4 ], [ 6, 12, 6 ], '', [ 54.7, -0.6, -103 ], [ 0, -Math.PI / 4, 0 ] ) );
+        this.portals.push( new PortalHitbox( [ -8.6, -2.8, -36.9 ], [ 6, 12, 6 ], '', [ 81.7, -0.3, -59.4 ], [ 0, -Math.PI / 3, 0 ] ) );
+        
+        // - Island 1 (starting from leftmost island, clock-wise)
+        this.portals.push( new PortalHitbox( [ -111, -1, -72 ], [ 6, 12, 6 ], '', [ -16.4, -1.3, -5.3 ] ) );
+
+        // - Island 2
+        this.portals.push( new PortalHitbox( [ -103.6, -2, -158 ], [ 6, 12, 6 ], '', [ -16.4, -1.3, -5.3 ] ) );
+
+        // - Island 3
+        this.portals.push( new PortalHitbox( [ 16, -0.7, -188 ], [ 6, 12, 6 ], '', [ -16.4, -1.3, -5.3 ] ) );
+
+        // - Island 4
+        this.portals.push( new PortalHitbox( [ 88, -0.6, -147.6 ], [ 6, 12, 6 ], '', [ -16.4, -1.3, -5.3 ] ) );
+
+        // - Island 5
+        this.portals.push( new PortalHitbox( [ 142, -0.3, -79.7 ], [ 6, 12, 6 ], '', [ -16.4, -1.3, -5.3 ] ) );
+
+        // - For test only
+        this.portals.forEach( ( portal ) => {
+            portal.scale.set( 0.3, 0.3, 0.3 );
+            this.group.add( portal );
+        } );
     }
 }
