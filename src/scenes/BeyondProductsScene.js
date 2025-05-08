@@ -4,7 +4,8 @@ import { BaseScene } from "./BaseScene.js";
 import { createVolumetricFog } from '../objects/VolumetricFog.js';
 import { loadDracoGltfModel, loadGltfModel } from '../MeshUtils.js';
 import { PortalHitbox } from '../objects/PortalHitbox.js';
-import HologramPedestal from '../objects/HologramPedestal.js';
+import HologramPedestal from '../objects/HologramPedestal.js'
+import { FramedRock } from '../objects/FramedRock.js';;
 
 export class BeyondProductsScene extends BaseScene {
     constructor( listener ) {
@@ -15,8 +16,8 @@ export class BeyondProductsScene extends BaseScene {
 
     load() {
         // Fog
-        const volumetricFog = new createVolumetricFog();
-        this.group.add( volumetricFog );
+        // const volumetricFog = new createVolumetricFog();
+        // this.group.add( volumetricFog );
 
         // Scene model
         // loadGltfModel( '/assets/model/beyond_products.gltf' )
@@ -104,5 +105,27 @@ export class BeyondProductsScene extends BaseScene {
             portal.scale.set( 0.3, 0.3, 0.3 );
             this.group.add( portal );
         } );
+
+        const rocksData = [
+            {
+              image: '/assets/works/ellen_fritz.png',
+              position: new THREE.Vector3(-21.7, 1, -36),
+              rotation: new THREE.Euler(0, -Math.PI, 0),
+              scale: new THREE.Vector3(0.2, 0.2, 0.2)
+            }
+        ];
+      
+        // for (const rockData of rocksData) {
+        //     new FramedRock(
+        //       '/assets/model/1rock1.glb',
+        //       rockData.image,
+        //       rockData.position,
+        //       rockData.rotation,
+        //       rockData.scale,
+        //       (group) => {
+        //         this.group.add(group); // Add once it's ready
+        //       }
+        //     );
+        // }
     }
 }

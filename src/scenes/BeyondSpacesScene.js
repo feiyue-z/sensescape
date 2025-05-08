@@ -80,22 +80,42 @@ export class BeyondSpacesScene extends BaseScene {
             this.group.add( portal );
         } );
 
-        // COMMENT OUT FROM HERE - to revert back to working version
         const rocksData = [
             {
               image: '/assets/works/ellen_fritz.png',
-              position: new THREE.Vector3(0, 0, 0),
-              rotation: new THREE.Euler(0, 0, 0)
+              position: new THREE.Vector3(1.2, 0.75, 0.75),
+              rotation: new THREE.Euler(0, -Math.PI, 0),
+              scale: new THREE.Vector3(0.3, 0.3, 0.3)
             },
             {
               image: '/assets/works/angel_ye.png',
-              position: new THREE.Vector3(2, 0, -1),
-              rotation: new THREE.Euler(0, Math.PI / 4, 0)
+              position: new THREE.Vector3(-1, 0.75, 0.75),
+              rotation: new THREE.Euler(0, -Math.PI, 0),
+              scale: new THREE.Vector3(0.3, 0.3, 0.3)
             },
             {
               image: '/assets/works/may_chen.png',
-              position: new THREE.Vector3(-3, 0, 1),
-              rotation: new THREE.Euler(0, -Math.PI / 2, 0)
+              position: new THREE.Vector3(1.2, 0.75, 3),
+              rotation: new THREE.Euler(0, -Math.PI, 0),
+              scale: new THREE.Vector3(0.3, 0.3, 0.3)
+            },
+            {
+                image: '/assets/works/alan.png',
+                position: new THREE.Vector3(-1, 0.75, 3),
+                rotation: new THREE.Euler(0, -Math.PI, 0),
+                scale: new THREE.Vector3(0.3, 0.3, 0.3)
+            },
+            {
+                image: '/assets/works/anita_erin.png',
+                position: new THREE.Vector3(1.2, 0.75, 5.25),
+                rotation: new THREE.Euler(0, -Math.PI, 0),
+                scale: new THREE.Vector3(0.3, 0.3, 0.3)
+            },
+            {
+                image: '/assets/works/vivian_li.png',
+                position: new THREE.Vector3(-1, 0.75, 5.25),
+                rotation: new THREE.Euler(0, -Math.PI, 0),
+                scale: new THREE.Vector3(0.3, 0.3, 0.3)
             }
           ];
       
@@ -105,7 +125,7 @@ export class BeyondSpacesScene extends BaseScene {
               rockData.image,
               rockData.position,
               rockData.rotation,
-              new THREE.Vector3(1, 1, 1),
+              rockData.scale,
               (group) => {
                 this.group.add(group); // Add once it's ready
               }
