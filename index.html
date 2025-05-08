@@ -1,13 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Sensescape</title>
-		<style>
-			body { margin: 0; }
-		</style>
-	</head>
-	<body>
-		<script type="module" src="/main.js"></script>
-	</body>
+<head>
+  <meta charset="utf-8">
+  <title>Sensescape</title>
+  <style>
+	@font-face {
+	font-family: 'TeXGyreHerosBold';
+	src: url('./fonts/texgyreheros-bold.otf') format('opentype');
+	font-weight: bold;
+	font-style: normal;
+	}
+
+	@font-face {
+	font-family: 'RedactionItalic';
+	src: url('./fonts/RedactionItalic-lgB8w.otf') format('opentype');
+	font-style: italic;
+	font-weight: normal;
+	}
+
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #welcome-text {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3.5rem;
+	  color: white;
+	  opacity: 0.5;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+      animation: fadeInOut 7s ease-out forwards;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    #welcome-text .italic {
+      font-family: 'RedactionItalic', sans-serif;
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    #welcome-text .bold {
+      font-family: 'TeXGyreHerosBold', sans-serif;
+      font-weight: bold;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Welcome Text -->
+  <div id="welcome-text">
+    <span class="italic">Welcome to</span> <span class="bold">SENSESCAPE</span>
+  </div>
+
+  <!-- Three.js Entry -->
+  <script type="module" src="/main.js"></script>
+
+  <!-- Optional: remove the element after fade -->
+  <script>
+    const welcomeText = document.getElementById('welcome-text');
+    welcomeText.addEventListener('animationend', () => {
+      welcomeText.remove(); // Or: welcomeText.style.display = 'none';
+    });
+  </script>
+</body>
 </html>
