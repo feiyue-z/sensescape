@@ -148,7 +148,7 @@ export class BeyondSensesScene extends BaseScene {S
 
         loadDracoGltfModel( '/assets/model/abstract_waves.glb' )
         .then( ( model ) => {
-            model.position.set( HOLO_POS_4.x, 0.4, HOLO_POS_4.z );
+            model.position.set( HOLO_POS_4.x, 0.3, HOLO_POS_4.z );
             model.scale.set( 0.5, 0.5, 0.5 );
 
             this.group.add( model );
@@ -156,7 +156,7 @@ export class BeyondSensesScene extends BaseScene {S
 
         loadGltfModel( '/assets/model/flower.glb', )
         .then( ( model ) => {
-            model.position.set( HOLO_POS_5.x, 0.3, HOLO_POS_5.z );
+            model.position.set( HOLO_POS_5.x, 0.4, HOLO_POS_5.z );
             model.scale.set( 0.001, 0.001, 0.001 );
 
             this.group.add( model );
