@@ -23,7 +23,8 @@ export class BeyondSensesScene extends BaseScene {S
         this.group.add( volumetricFog );
 
         // Scene model
-        loadGltfModel( '/assets/model/beyond_senses.glb' )
+        // loadGltfModel( '/assets/model/beyond_senses.glb' )
+        loadDracoGltfModel( '/assets/model/beyond_senses_draco.glb' )
         .then( ( model ) => {
             // const box = new THREE.Box3().setFromObject(model);
             // const center = new THREE.Vector3();
@@ -47,7 +48,6 @@ export class BeyondSensesScene extends BaseScene {S
 
         // Hologram pedstal
 
-        // const HOLO_POS_1 = [ 0, 0.55, -5.7 ];
         const HOLO_POS_1 = new THREE.Vector3( 0, 0.55, -5.7 );
         const HOLO_POS_2 = new THREE.Vector3( 0, 0.55, -9.85 );
         const HOLO_POS_3 = new THREE.Vector3( 0, 0.55, -14.15 );
@@ -55,19 +55,15 @@ export class BeyondSensesScene extends BaseScene {S
         const HOLO_POS_5 = new THREE.Vector3( 0, 0.55, -23.15 );
 
         const holo_1 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
-        // holo_1.position.set( 0, 0.55, -5.7 );
         holo_1.position.set( ...HOLO_POS_1 );
 
         const holo_2 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
-        // holo_2.position.set( 0, 0.55, -9.85 );
         holo_2.position.set( ...HOLO_POS_2 );
 
         const holo_3 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
-        // holo_3.position.set( 0, 0.55, -14.15 );
         holo_3.position.set( ...HOLO_POS_3 );
 
         const holo_4 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
-        // holo_4.position.set( 0, 0.55, -18.6 );
         holo_4.position.set( ...HOLO_POS_4 );
 
         const holo_5 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
@@ -152,8 +148,16 @@ export class BeyondSensesScene extends BaseScene {S
 
         loadDracoGltfModel( '/assets/model/abstract_waves.glb' )
         .then( ( model ) => {
-            model.position.set( HOLO_POS_4.x, 0.3, HOLO_POS_4.z );
+            model.position.set( HOLO_POS_4.x, 0.4, HOLO_POS_4.z );
             model.scale.set( 0.5, 0.5, 0.5 );
+
+            this.group.add( model );
+        } );
+
+        loadGltfModel( '/assets/model/flower.glb', )
+        .then( ( model ) => {
+            model.position.set( HOLO_POS_5.x, 0.3, HOLO_POS_5.z );
+            model.scale.set( 0.001, 0.001, 0.001 );
 
             this.group.add( model );
         } );
@@ -172,7 +176,6 @@ export class BeyondSensesScene extends BaseScene {S
         // Portal
         this.portals.push( new PortalHitbox( [ 0, 0.4, -28 ], [ 6, 12, 6 ], 'lobby', [ -9.15, 20.89, 0.21 ], [ 0, -Math.PI / 2, 0 ] ) ); 
 
-        // - For test only
         this.portals.forEach( ( portal ) => {
             portal.scale.set( 0.1, 0.1, 0.1 );
             this.group.add( portal );
