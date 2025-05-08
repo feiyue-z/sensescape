@@ -5,10 +5,10 @@ import { FramedRock } from '../objects/FramedRock.js';
 export class ParticleTestScene extends BaseScene {
   constructor(listener) {
     super(listener);
-    this.load();
+    this.load(); // call synchronous load
   }
 
-  async load() {
+  load() {
     // Visual helpers
     const grid = new THREE.GridHelper(10, 10);
     const light = new THREE.PointLight(0xffffff, 1, 10);
@@ -32,18 +32,20 @@ export class ParticleTestScene extends BaseScene {
         image: '/assets/works/may_chen.png',
         position: new THREE.Vector3(-3, 0, 1),
         rotation: new THREE.Euler(0, -Math.PI / 2, 0)
-      },
+      }
     ];
 
     for (const rockData of rocksData) {
-      const rock = new FramedRock(
+      new FramedRock(
         '/assets/model/1rock1.glb',
         rockData.image,
         rockData.position,
-        rockData.rotation
+        rockData.rotation,
+        new THREE.Vector3(1, 1, 1),
+        (group) => {
+          this.group.add(group); // Add once it's ready
+        }
       );
-      await rock.load();
-      this.group.add(rock.getObject3D());
     }
   }
 

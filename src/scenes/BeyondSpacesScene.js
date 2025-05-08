@@ -5,6 +5,7 @@ import { loadGltfModel } from '../MeshUtils.js';
 import { createVolumetricFog } from '../objects/VolumetricFog.js';
 import HologramPedestal from '../objects/HologramPedestal.js';
 import { PortalHitbox } from '../objects/PortalHitbox.js';
+import { FramedRock } from '../objects/FramedRock.js';
 
 export class BeyondSpacesScene extends BaseScene {
     constructor( listener ) {
@@ -17,7 +18,7 @@ export class BeyondSpacesScene extends BaseScene {
         // Fog
         const volumetricFog = createVolumetricFog();
         this.group.add( volumetricFog );
-
+        
         // Scene model
         loadGltfModel( '/assets/model/beyond_spaces.glb' )
         .then( ( model ) => {
@@ -78,5 +79,37 @@ export class BeyondSpacesScene extends BaseScene {
             portal.scale.set( 0.15, 0.15, 0.15 );
             this.group.add( portal );
         } );
+
+        // COMMENT OUT FROM HERE - to revert back to working version
+        // const rocksData = [
+        //     {
+        //       image: '/assets/works/ellen_fritz.png',
+        //       position: new THREE.Vector3(0, 0, 0),
+        //       rotation: new THREE.Euler(0, 0, 0)
+        //     },
+        //     {
+        //       image: '/assets/works/angel_ye.png',
+        //       position: new THREE.Vector3(2, 0, -1),
+        //       rotation: new THREE.Euler(0, Math.PI / 4, 0)
+        //     },
+        //     {
+        //       image: '/assets/works/may_chen.png',
+        //       position: new THREE.Vector3(-3, 0, 1),
+        //       rotation: new THREE.Euler(0, -Math.PI / 2, 0)
+        //     }
+        //   ];
+      
+        //   for (const rockData of rocksData) {
+        //     new FramedRock(
+        //       '/assets/model/1rock1.glb',
+        //       rockData.image,
+        //       rockData.position,
+        //       rockData.rotation,
+        //       new THREE.Vector3(1, 1, 1),
+        //       (group) => {
+        //         this.group.add(group); // Add once it's ready
+        //       }
+        //     );
+        //   }
     }
 }

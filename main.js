@@ -57,8 +57,8 @@ function init() {
 
     SceneManager.addScene('particles', new ParticleTestScene(listener));
 
-    // SceneManager.loadScene('particles');
     // SceneManager.loadScene('spaces');
+    // SceneManager.loadScene('particles');
     SceneManager.loadScene('lobby');
 
     particleSystemInit( scene );
