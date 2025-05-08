@@ -16,8 +16,8 @@ export class BeyondSpacesScene extends BaseScene {
 
     load() {
         // Fog
-        const volumetricFog = createVolumetricFog();
-        this.group.add( volumetricFog );
+        // const volumetricFog = createVolumetricFog();
+        // this.group.add( volumetricFog );
         
         // Scene model
         loadGltfModel( '/assets/model/beyond_spaces.glb' )
@@ -34,33 +34,33 @@ export class BeyondSpacesScene extends BaseScene {
             this.group.add( model );
         } );
 
-        // Sound
-        this.loadSound( './assets/audio/spaces_demo.mp3' );
+        // // Sound
+        // this.loadSound( './assets/audio/spaces_demo.mp3' );
 
-        // Hologram Pedstals
-        const holo_1 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
-        holo_1.position.set( -1.1, 0.6, 0.78 );
+        // // Hologram Pedstals
+        // const holo_1 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
+        // holo_1.position.set( -1.1, 0.6, 0.78 );
 
-        const holo_2 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
-        holo_2.position.set( -1.1, 0.6, 3.0 );
+        // const holo_2 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
+        // holo_2.position.set( -1.1, 0.6, 3.0 );
 
-        const holo_3 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
-        holo_3.position.set( -1.1, 0.6, 5.25 );
+        // const holo_3 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
+        // holo_3.position.set( -1.1, 0.6, 5.25 );
 
-        const holo_4 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
-        holo_4.position.set( 1.15, 0.6, 0.78 );
+        // const holo_4 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
+        // holo_4.position.set( 1.15, 0.6, 0.78 );
 
-        const holo_5 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
-        holo_5.position.set( 1.15, 0.6, 3.0 );
+        // const holo_5 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
+        // holo_5.position.set( 1.15, 0.6, 3.0 );
 
-        const holo_6 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
-        holo_6.position.set( 1.15, 0.6, 5.25 );
+        // const holo_6 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
+        // holo_6.position.set( 1.15, 0.6, 5.25 );
         
-        const holograms = [ holo_1, holo_2, holo_3, holo_4, holo_5, holo_6 ];
-        holograms.forEach( ( holo ) => {
-            this.group.add( holo );
-            this.addSpotLight2( [ holo.position.x, 0.2, holo.position.z ], 0x621fff, 100, 1,  Math.PI / 3, 1, 2 );
-        } );
+        // const holograms = [ holo_1, holo_2, holo_3, holo_4, holo_5, holo_6 ];
+        // holograms.forEach( ( holo ) => {
+        //     this.group.add( holo );
+        //     this.addSpotLight2( [ holo.position.x, 0.2, holo.position.z ], 0x621fff, 100, 1,  Math.PI / 3, 1, 2 );
+        // } );
 
         // this.addSpotLight2( [ 0, 1, 0 ], 0xffffff, 50, 20,  Math.PI / 3, 1, 2 );
 
@@ -81,35 +81,35 @@ export class BeyondSpacesScene extends BaseScene {
         } );
 
         // COMMENT OUT FROM HERE - to revert back to working version
-        // const rocksData = [
-        //     {
-        //       image: '/assets/works/ellen_fritz.png',
-        //       position: new THREE.Vector3(0, 0, 0),
-        //       rotation: new THREE.Euler(0, 0, 0)
-        //     },
-        //     {
-        //       image: '/assets/works/angel_ye.png',
-        //       position: new THREE.Vector3(2, 0, -1),
-        //       rotation: new THREE.Euler(0, Math.PI / 4, 0)
-        //     },
-        //     {
-        //       image: '/assets/works/may_chen.png',
-        //       position: new THREE.Vector3(-3, 0, 1),
-        //       rotation: new THREE.Euler(0, -Math.PI / 2, 0)
-        //     }
-        //   ];
+        const rocksData = [
+            {
+              image: '/assets/works/ellen_fritz.png',
+              position: new THREE.Vector3(0, 0, 0),
+              rotation: new THREE.Euler(0, 0, 0)
+            },
+            {
+              image: '/assets/works/angel_ye.png',
+              position: new THREE.Vector3(2, 0, -1),
+              rotation: new THREE.Euler(0, Math.PI / 4, 0)
+            },
+            {
+              image: '/assets/works/may_chen.png',
+              position: new THREE.Vector3(-3, 0, 1),
+              rotation: new THREE.Euler(0, -Math.PI / 2, 0)
+            }
+          ];
       
-        //   for (const rockData of rocksData) {
-        //     new FramedRock(
-        //       '/assets/model/1rock1.glb',
-        //       rockData.image,
-        //       rockData.position,
-        //       rockData.rotation,
-        //       new THREE.Vector3(1, 1, 1),
-        //       (group) => {
-        //         this.group.add(group); // Add once it's ready
-        //       }
-        //     );
-        //   }
+          for (const rockData of rocksData) {
+            new FramedRock(
+              '/assets/model/1rock1.glb',
+              rockData.image,
+              rockData.position,
+              rockData.rotation,
+              new THREE.Vector3(1, 1, 1),
+              (group) => {
+                this.group.add(group); // Add once it's ready
+              }
+            );
+          }
     }
 }
