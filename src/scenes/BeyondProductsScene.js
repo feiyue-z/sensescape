@@ -68,10 +68,10 @@ export class BeyondProductsScene extends BaseScene {
         this.addDirectionalLight( [ -5.4, 1.26, 0.48 ], 0x8e5492, 3 );
         this.addDirectionalLight( [ -30, 4, 14.76 ], 0x47e0ff, 4 );
 
-        this.addSpotLight( [ -3.6, -24.96, -0.54 ], 0x004cff, 500, 20, 1, 1, 2 );
+        this.addSpotLight( [ -3.6, -24.96, -0.54 ], 0x004cff, 500, 20, 1, 1, 2, false );
 
-        this.addPointLight( [ -17.34, 3, 0 ], 0x535ef9, 3, 100, 2 );
-        this.addPointLight( [ -1.32, 3, -30 ], 0xfbc7ff, 23, 20, 2 );
+        this.addPointLight( [ -17.34, 3, 0 ], 0x535ef9, 3, 100, 2, false );
+        this.addPointLight( [ -1.32, 3, -30 ], 0xfbc7ff, 23, 20, 2, false );
 
         // Portal
 
@@ -115,17 +115,17 @@ export class BeyondProductsScene extends BaseScene {
             }
         ];
       
-        // for (const rockData of rocksData) {
-        //     new FramedRock(
-        //       '/assets/model/1rock1.glb',
-        //       rockData.image,
-        //       rockData.position,
-        //       rockData.rotation,
-        //       rockData.scale,
-        //       (group) => {
-        //         this.group.add(group); // Add once it's ready
-        //       }
-        //     );
-        // }
+        for (const rockData of rocksData) {
+            new FramedRock(
+              '/assets/model/1rock1.glb',
+              rockData.image,
+              rockData.position,
+              rockData.rotation,
+              rockData.scale,
+              (group) => {
+                this.group.add(group); // Add once it's ready
+              }
+            );
+        }
     }
 }

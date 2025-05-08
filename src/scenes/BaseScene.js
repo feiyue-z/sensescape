@@ -75,22 +75,28 @@ export class BaseScene {
         } );
     }
 
-    addPointLight( position, color, intensity, distance, decay = 2 ) {
+    addPointLight( position, color, intensity, distance, decay = 2, enableShadow = true ) {
         const pointLight = new THREE.PointLight( color, intensity, distance, decay );
-        pointLight.castShadow = true;
         pointLight.position.set( ...position );
-        pointLight.layers.enable( LAYER_VOLUMETRIC_LIGHTING );
+
+        if ( enableShadow ) {
+            pointLight.castShadow = true;
+            pointLight.layers.enable( LAYER_VOLUMETRIC_LIGHTING );
+        }
     
         this.group.add( pointLight );
     
         return pointLight;
     }
     
-    addSpotLight( position, color, intensity, distance, angle, penumbra, decay = 2 ) {
+    addSpotLight( position, color, intensity, distance, angle, penumbra, decay = 2, enableShadow = true ) {
         const spotLight = new THREE.SpotLight( color, intensity, distance, angle, penumbra, decay );
-        spotLight.castShadow = true;
         spotLight.position.set( ...position );
-        spotLight.layers.enable( LAYER_VOLUMETRIC_LIGHTING );
+
+        if ( enableShadow ) {
+            spotLight.castShadow = true;
+            spotLight.layers.enable( LAYER_VOLUMETRIC_LIGHTING );
+        }
     
         this.group.add( spotLight );
     
