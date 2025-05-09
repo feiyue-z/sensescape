@@ -12,8 +12,7 @@ export class PortalHitbox extends THREE.Object3D {
 
         this.geometry = new THREE.BoxGeometry( ...size );
         this.material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } ); 
-        // this.material.visible = true;
-        // this.material = new THREE.MeshStandardMaterial( { color: 0xff0000 } ); 
+        this.material.visible = false;
         this.mesh = new THREE.Mesh( this.geometry, this.material );
 
         this.add( this.mesh ); // Add hitbox mesh to this Object3D object

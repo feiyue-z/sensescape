@@ -49,6 +49,10 @@ class SceneManager {
         return this.currentScene;
     }
 
+    getCurrentNavStep() {
+        return this.currentScene.navigation_step;
+    }
+
     animate( camera ) {
         if ( this.currentScene ) {
             this.currentScene.animate( camera );

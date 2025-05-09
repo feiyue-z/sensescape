@@ -55,10 +55,10 @@ function init() {
     scene.background = new THREE.Color( 0x000000 );
 
     SceneManager.init( scene );
-    SceneManager.addScene( 'lobby', new LobbyScene( listener ) );
-    SceneManager.addScene( 'products', new BeyondProductsScene( listener ) );
-    SceneManager.addScene( 'senses', new BeyondSensesScene( listener ) );
-    SceneManager.addScene( 'spaces', new BeyondSpacesScene( listener ) );
+    SceneManager.addScene( 'lobby', new LobbyScene( listener, 0.1 ) );
+    SceneManager.addScene( 'products', new BeyondProductsScene( listener, 0.04 ) );
+    SceneManager.addScene( 'senses', new BeyondSensesScene( listener, 0.025 ) );
+    SceneManager.addScene( 'spaces', new BeyondSpacesScene( listener, 0.04 ) );
 
     SceneManager.addScene('particles', new ParticleTestScene(listener));
 
@@ -86,7 +86,7 @@ function init() {
     document.addEventListener( 'mousemove', ( event ) => onMouseMove( event ) );
     // document.addEventListener( 'click', ( event ) => onMouseClick( event, camera ) );
 
-    initGUI();
+    // initGUI();
 }
 
 let lastcam = new THREE.Vector3();

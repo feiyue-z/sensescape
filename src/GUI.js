@@ -3,7 +3,8 @@ import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
 import { volumetricPass, volumetricMaterial, denoiseStrength } from './objects/VolumetricFog.js';
 import SceneManager from './SceneManager.js';
 
-const gui = new GUI();
+// const gui = new GUI();
+const gui = null;
 let pointLightCount = 0;
 let spotLightCount = 0;
 let directionalLightCount = 0;

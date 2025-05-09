@@ -8,8 +8,8 @@ import { PortalHitbox } from '../objects/PortalHitbox.js';
 import { FramedRock } from '../objects/FramedRock.js';
 
 export class BeyondSpacesScene extends BaseScene {
-    constructor( listener ) {
-        super( listener );
+    constructor( listener, navigation_step ) {
+        super( listener, navigation_step );
 
         this.load();
     }
@@ -34,8 +34,8 @@ export class BeyondSpacesScene extends BaseScene {
             this.group.add( model );
         } );
 
-        // // Sound
-        // this.loadSound( './assets/audio/spaces_demo.mp3' );
+        // Sound
+        this.loadSound( './assets/audio/beyond-spaces.mp3' );
 
         // // Hologram Pedstals
         // const holo_1 = new HologramPedestal( [ 0.3, 0.5, 0.3 ] );
