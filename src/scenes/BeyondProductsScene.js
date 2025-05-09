@@ -8,8 +8,8 @@ import HologramPedestal from '../objects/HologramPedestal.js'
 import { FramedRock } from '../objects/FramedRock.js';;
 
 export class BeyondProductsScene extends BaseScene {
-    constructor( listener ) {
-        super( listener );
+    constructor( listener, navigation_step ) {
+        super( listener, navigation_step );
 
         this.load();
     }

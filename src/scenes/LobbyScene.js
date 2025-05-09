@@ -7,8 +7,8 @@ import { PortalHitbox } from '../objects/PortalHitbox.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 export class LobbyScene extends BaseScene {
-    constructor( listener ) {
-        super( listener );
+    constructor( listener, navigation_step ) {
+        super( listener, navigation_step );
 
         this.load();
     }
@@ -36,7 +36,6 @@ export class LobbyScene extends BaseScene {
         //     // Setup animation mixer
         //     const mixer = new THREE.AnimationMixer( model );
         //     model.animations.forEach( ( clip ) => {
-        //         console.log("*")
         //         mixer.clipAction( clip ).play();
         //     } );
 
@@ -52,7 +51,6 @@ export class LobbyScene extends BaseScene {
             // Setup animation mixer
             const mixer = new THREE.AnimationMixer( gltf.scene );
             gltf.animations.forEach( ( clip ) => {
-                console.log("*")
                 mixer.clipAction( clip ).play();
             } );
 

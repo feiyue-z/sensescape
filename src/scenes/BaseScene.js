@@ -5,10 +5,11 @@ import { LAYER_VOLUMETRIC_LIGHTING } from '../objects/VolumetricFog.js';
 import { getParticleSystemGroup } from '../ParticleSystem.js';
 
 export class BaseScene {
-    constructor( listener ) {
+    constructor( listener, navigation_step = 0.05 ) {
         this.group = new THREE.Group(); // Holds all objects in the scene
         this.portals = []
         this.sound = new THREE.Audio( listener );
+        this.navigation_step = navigation_step;
     }
 
     load() {

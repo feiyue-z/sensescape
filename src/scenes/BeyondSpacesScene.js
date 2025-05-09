@@ -8,8 +8,8 @@ import { PortalHitbox } from '../objects/PortalHitbox.js';
 import { FramedRock } from '../objects/FramedRock.js';
 
 export class BeyondSpacesScene extends BaseScene {
-    constructor( listener ) {
-        super( listener );
+    constructor( listener, navigation_step ) {
+        super( listener, navigation_step );
 
         this.load();
     }

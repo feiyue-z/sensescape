@@ -11,8 +11,8 @@ import { mixers } from '../../main.js';
 import { PortalHitbox } from '../objects/PortalHitbox.js';
 
 export class BeyondSensesScene extends BaseScene {S
-    constructor( listener ) {
-        super( listener );
+    constructor( listener, navigation_step ) {
+        super( listener, navigation_step );
 
         this.load();
     }
@@ -77,23 +77,6 @@ export class BeyondSensesScene extends BaseScene {S
 
         // Submission object
 
-        const dracoLoader = new DRACOLoader();
-        dracoLoader.setDecoderPath( 'https://www.gstatic.com/draco/v1/decoders/' );
-
-        const loader = new GLTFLoader();
-        loader.setDRACOLoader( dracoLoader );
-
-        // loader.load( '/assets/model/gentlemonstercards.glb', ( gltf ) => {
-        //     gltf.scene.position.set( HOLO_POS_1.x, 0.3, HOLO_POS_1.z );
-        //     // gltf.scene.position.set( ...HOLO_POS_1 );
-        //     gltf.scene.scale.set( 0.1, 0.1, 0.1 );
-        //     gltf.scene.rotateY( Math.PI / 2 );
-
-        //     console.log(gltf.scene.position)
-
-        //     this.group.add( gltf.scene );
-        // } );
-
         loadDracoGltfModel( '/assets/model/gentlemonstercards.glb' )
         .then( ( model ) => {
             model.position.set( HOLO_POS_1.x, 0.3, HOLO_POS_1.z );
@@ -111,6 +94,12 @@ export class BeyondSensesScene extends BaseScene {S
             this.group.add( model );
         } );
 
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath( 'https://www.gstatic.com/draco/v1/decoders/' );
+
+        const loader = new GLTFLoader();
+        loader.setDRACOLoader( dracoLoader );
+
         loader.load( '/assets/model/serpentinus.glb', ( gltf ) => {
             gltf.scene.position.set( HOLO_POS_3.x, 0.5, HOLO_POS_3.z );
             gltf.scene.scale.set( 0.1, 0.1, 0.1 );
@@ -127,24 +116,6 @@ export class BeyondSensesScene extends BaseScene {S
 
             this.group.add( gltf.scene );
         } );
-
-        // loadDracoGltfModel( '/assets/model/serpentinus.glb' )
-        // .then( ( model ) => {
-        //     model.position.set( HOLO_POS_3.x, 0.5, HOLO_POS_3.z );
-        //     model.scale.set( 0.1, 0.1, 0.1 );
-        //     model.rotateX( Math.PI / 2 );
-
-        //     // Setup animation mixer
-        //     const mixer = new THREE.AnimationMixer( model );
-        //     model.animations.forEach( ( clip ) => {
-        //         console.log("*")
-        //         mixer.clipAction( clip ).play();
-        //     } );
-
-        //     mixers.push( mixer );
-
-        //     this.group.add( model );
-        // } );
 
         loadDracoGltfModel( '/assets/model/abstract_waves.glb' )
         .then( ( model ) => {
