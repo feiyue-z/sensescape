@@ -24,12 +24,10 @@ init();
 function init() {
     // Set up camera
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.01, 5000 );
-    // camera.position.set( 0, 0.5, 0.5 ); // BEYOND SENSES TESTING
-
+    // camera.position.set( 0, 0.5, 0.5 );
     camera.position.set( -9.15, 20.89, 0.21 );
+    // camera.position.set( -16, 1, -3.1 );
     camera.rotation.set( 0, -Math.PI / 2, 0 );
-
-    // camera.position.set( -16, 1, -3.1 ); // BEYOND PRODUCTS TESTING
 
     console.log(camera.position);
 
@@ -56,9 +54,9 @@ function init() {
 
     SceneManager.init( scene );
     SceneManager.addScene( 'lobby', new LobbyScene( listener, 0.1 ) );
-    SceneManager.addScene( 'products', new BeyondProductsScene( listener, 0.04 ) );
+    SceneManager.addScene( 'products', new BeyondProductsScene( listener, 0.1 ) );
     SceneManager.addScene( 'senses', new BeyondSensesScene( listener, 0.025 ) );
-    SceneManager.addScene( 'spaces', new BeyondSpacesScene( listener, 0.04 ) );
+    SceneManager.addScene( 'spaces', new BeyondSpacesScene( listener, 0.02 ) );
 
     SceneManager.addScene('particles', new ParticleTestScene(listener));
 
@@ -94,14 +92,13 @@ let lastcam = new THREE.Vector3();
 function animate() {
     // const deltaTime = clock.getDelta();
     // const elapsed = clock.getElapsedTime();
-    const currentScene = SceneManager.getCurrentScene();
 
     if ( !lastcam.equals( camera.position ) ) {
         console.log( camera.position );
         lastcam.copy( camera.position );
     }
     
-    updateKeyboardMovement(camera, currentScene);
+    updateKeyboardMovement( camera );
     updateMouseMovement( camera );
     updateParticleSystem( camera );
 

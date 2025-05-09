@@ -129,8 +129,4 @@ export class BaseScene {
     
         return directionalLight;
     }
-
-    getNavigateSpeed() {
-        return this.navigateSpeed;
-    }
 }

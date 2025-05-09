@@ -83,40 +83,40 @@ export class BeyondSpacesScene extends BaseScene {
         const rocksData = [
             {
               image: '/assets/works/ellen_fritz.png',
-              position: new THREE.Vector3(1.2, 0.75, 0.75),
+              position: new THREE.Vector3(1, 1.2, 0.75),
               rotation: new THREE.Euler(0, -Math.PI, 0),
-              scale: new THREE.Vector3(0.3, 0.3, 0.3)
+              scale: new THREE.Vector3(0.5, 0.5, 0.5)
             },
             {
               image: '/assets/works/angel_ye.png',
-              position: new THREE.Vector3(-1, 0.75, 0.75),
+              position: new THREE.Vector3(-1.2, 1.2, 0.75),
               rotation: new THREE.Euler(0, -Math.PI, 0),
-              scale: new THREE.Vector3(0.3, 0.3, 0.3)
+              scale: new THREE.Vector3(0.5, 0.5, 0.5)
             },
             {
               image: '/assets/works/may_chen.png',
-              position: new THREE.Vector3(1.2, 0.75, 3),
+              position: new THREE.Vector3(1, 1.2, 3),
               rotation: new THREE.Euler(0, -Math.PI, 0),
-              scale: new THREE.Vector3(0.3, 0.3, 0.3)
+              scale: new THREE.Vector3(0.5, 0.5, 0.5)
             },
             {
                 image: '/assets/works/alan.png',
-                position: new THREE.Vector3(-1, 0.75, 3),
+                position: new THREE.Vector3(-1.2, 1.2, 3),
                 rotation: new THREE.Euler(0, -Math.PI, 0),
-                scale: new THREE.Vector3(0.3, 0.3, 0.3)
-            },
+                scale: new THREE.Vector3(0.5, 0.5, 0.5)
+              },
             {
                 image: '/assets/works/anita_erin.png',
-                position: new THREE.Vector3(1.2, 0.75, 5.25),
+                position: new THREE.Vector3(1, 1.2, 5.25),
                 rotation: new THREE.Euler(0, -Math.PI, 0),
-                scale: new THREE.Vector3(0.3, 0.3, 0.3)
-            },
+                scale: new THREE.Vector3(0.5, 0.5, 0.5)
+              },
             {
                 image: '/assets/works/vivian_li.png',
-                position: new THREE.Vector3(-1, 0.75, 5.25),
+                position: new THREE.Vector3(-1.2, 1.2, 5.25),
                 rotation: new THREE.Euler(0, -Math.PI, 0),
-                scale: new THREE.Vector3(0.3, 0.3, 0.3)
-            }
+                scale: new THREE.Vector3(0.5, 0.5, 0.5)
+              }
           ];
       
           for (const rockData of rocksData) {

@@ -109,13 +109,13 @@ export class BeyondProductsScene extends BaseScene {
         const rocksData = [
             {
               image: '/assets/works/evette_niche.png',
-              position: new THREE.Vector3(-21, -1, -46),
+              position: new THREE.Vector3(-21, -1.4, -46),
               rotation: new THREE.Euler(0, -6 * Math.PI / 7, 0),
               scale: new THREE.Vector3(1, 1, 1)
             }, 
             {
                 image: '/assets/works/caleb_wu.png',
-                position: new THREE.Vector3(-15, -1, -47.5),
+                position: new THREE.Vector3(-15, -1.4, -47.5),
                 rotation: new THREE.Euler(0, - 8 * Math.PI / 7, 0),
                 scale: new THREE.Vector3(1, 1, 1)
             },
@@ -158,6 +158,30 @@ export class BeyondProductsScene extends BaseScene {
             {
                 image: '/assets/works/katherine_bonsi.png',
                 position: new THREE.Vector3(70, 1, -132),
+                rotation: new THREE.Euler(0, Math.PI, 0),
+                scale: new THREE.Vector3(1.5, 1.5, 1.5)
+            },
+            {
+                image: '/assets/works/sabastian_harry.png',
+                position: new THREE.Vector3(116, 1, -87),
+                rotation: new THREE.Euler(0, Math.PI, 0),
+                scale: new THREE.Vector3(1.5, 1.5, 1.5)
+            },
+            {
+                image: '/assets/works/stephen_jiang.png',
+                position: new THREE.Vector3(132, 1, -60),
+                rotation: new THREE.Euler(0, 1 * Math.PI / 4, 0),
+                scale: new THREE.Vector3(1.5, 1.5, 1.5)
+            },
+            {
+                image: '/assets/works/sanghyuk_seo.png',
+                position: new THREE.Vector3(-151, 1, -75),
+                rotation: new THREE.Euler(0, Math.PI, 0),
+                scale: new THREE.Vector3(1.5, 1.5, 1.5)
+            }, 
+            {
+                image: '/assets/works/seungwoo_hong.png',
+                position: new THREE.Vector3(-130, 1, -84),
                 rotation: new THREE.Euler(0, Math.PI, 0),
                 scale: new THREE.Vector3(1.5, 1.5, 1.5)
             }

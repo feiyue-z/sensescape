@@ -48,7 +48,6 @@ export function updateKeyboardMovement( camera ) {
     if ( keyMap.get( 'KeyR' ) ) camera.translateY(  NAVIGATE_STEP );
     if ( keyMap.get( 'KeyC' ) ) camera.translateY( -NAVIGATE_STEP );
 }
-  
 
 export function onMouseMove( event ) {
     updateMouseNDC( event );
