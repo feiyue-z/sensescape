@@ -16,7 +16,6 @@ export class LobbyScene extends BaseScene {
     load() {
         // Scene model
         loadGltfModel( '/assets/model/lobby.glb' )
-        // loadGltfModel( 'https://storage.cloud.google.com/sensescape/lobby.glb?authuser=1' )
         .then( ( model ) => {
             model.traverse( ( child ) => {
                 if ( child.isMesh ) {
@@ -24,45 +23,43 @@ export class LobbyScene extends BaseScene {
                 }
             } );
 
-            // model.scale.set(0.5,0.5,0.5);
             this.group.add( model );
         } );
 
-        // // Vinyl model
-        loadGltfModel( '/assets/model/vinyl.glb' )
-        // loadGltfModel( 'https://storage.cloud.google.com/sensescape/lobby.glb?authuser=1' )
-        .then( ( model ) => {
-            console.log('Number of animations:', model.animations.length);
+        // Vinyl model
+        // loadGltfModel( '/assets/model/vinyl.glb' )
+        // .then( ( model ) => {
+        //     console.log('Number of animations:', model.animations.length);
 
-            model.position.set( 0, 18, 0 );
+        //     model.position.set( 0, 18, 0 );
+
+        //     // Setup animation mixer
+        //     const mixer = new THREE.AnimationMixer( model );
+        //     model.animations.forEach( ( clip ) => {
+        //         console.log("*")
+        //         mixer.clipAction( clip ).play();
+        //     } );
+
+        //     mixers.push( mixer );
+
+        //     this.group.add( model );
+        // } );
+
+        const loader = new GLTFLoader();
+        loader.load( '/assets/model/vinyl_animated.glb', ( gltf ) => {
+            gltf.scene.position.set( 0, 15, 0 );
 
             // Setup animation mixer
-            const mixer = new THREE.AnimationMixer( model );
-            model.animations.forEach( ( clip ) => {
+            const mixer = new THREE.AnimationMixer( gltf.scene );
+            gltf.animations.forEach( ( clip ) => {
                 console.log("*")
                 mixer.clipAction( clip ).play();
             } );
 
             mixers.push( mixer );
 
-            this.group.add( model );
+            this.group.add( gltf.scene );
         } );
-
-        // const loader = new GLTFLoader();
-        // loader.load( '/assets/model/vinyl.glb', ( gltf ) => {
-        //     gltf.scene.position.set( 0, 18, 0 );
-        //     // gltf.scene.scale.set( 0.5, 0.5, 0.5 );
-
-        //     // // Setup animation mixer
-        //     // const mixer = new THREE.AnimationMixer( gltf.scene );
-        //     // gltf.animations.forEach( ( clip ) => {
-        //     //     mixer.clipAction( clip ).play();
-        //     // } );
-
-        //     // mixers.push( mixer );
-
-        //     this.group.add( gltf.scene );
-        // } );
 
         // Sound
         this.loadSound( './assets/audio/lobby_demo_2.mp3' );
