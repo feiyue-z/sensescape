@@ -38,15 +38,16 @@ export function onKeyUp( event ) {
     keyMap.set( event.code, false );
 }
 
-export function updateKeyboardMovement( camera ) {
+export function updateKeyboardMovement(camera, delta) {
     const NAVIGATE_STEP = SceneManager.getCurrentNavStep();
+    const step = NAVIGATE_STEP * 100 * delta;  // scale step by frame time
 
-    if ( keyMap.get( 'KeyW' ) ) camera.translateZ( -NAVIGATE_STEP );
-    if ( keyMap.get( 'KeyS' ) ) camera.translateZ(  NAVIGATE_STEP );
-    if ( keyMap.get( 'KeyA' ) ) camera.translateX( -NAVIGATE_STEP );
-    if ( keyMap.get( 'KeyD' ) ) camera.translateX(  NAVIGATE_STEP );
-    if ( keyMap.get( 'KeyR' ) ) camera.translateY(  NAVIGATE_STEP );
-    if ( keyMap.get( 'KeyC' ) ) camera.translateY( -NAVIGATE_STEP );
+    if (keyMap.get('KeyW')) camera.translateZ(-step);
+    if (keyMap.get('KeyS')) camera.translateZ(step);
+    if (keyMap.get('KeyA')) camera.translateX(-step);
+    if (keyMap.get('KeyD')) camera.translateX(step);
+    if (keyMap.get('KeyR')) camera.translateY(step);
+    if (keyMap.get('KeyC')) camera.translateY(-step);
 }
 
 export function onMouseMove( event ) {

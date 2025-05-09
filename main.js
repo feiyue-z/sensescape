@@ -91,6 +91,7 @@ let lastcam = new THREE.Vector3();
 
 function animate() {
     // const deltaTime = clock.getDelta();
+    const delta = clock.getDelta();
     // const elapsed = clock.getElapsedTime();
 
     if ( !lastcam.equals( camera.position ) ) {
@@ -98,11 +99,10 @@ function animate() {
         lastcam.copy( camera.position );
     }
     
-    updateKeyboardMovement( camera );
-    updateMouseMovement( camera );
-    updateParticleSystem( camera );
+    updateKeyboardMovement(camera, delta);
+    updateMouseMovement(camera);
+    updateParticleSystem(camera);
 
-    const delta = clock.getDelta();
     mixers.forEach( ( mixer ) => mixer.update( delta ) );
 
     SceneManager.animate( camera );
