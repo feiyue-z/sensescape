@@ -133,6 +133,9 @@ export class BeyondSensesScene extends BaseScene {S
             this.group.add( model );
         } );
 
+        // Sound
+        this.loadSound( './assets/audio/beyond-senses.mp3' );
+
         // Light
         this.addDirectionalLight( [ 0, 1.98, -30 ], 0x002aff, 10 );
         this.addDirectionalLight( [ 11.58, 22.62, 22.62 ], 0x1f0d3a, 3 );

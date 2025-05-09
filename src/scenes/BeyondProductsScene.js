@@ -44,7 +44,7 @@ export class BeyondProductsScene extends BaseScene {
         } );
 
         // Sound
-        this.loadSound( './assets/audio/products_demo.mp3' );
+        this.loadSound( './assets/audio/beyond-products.mp3' );
 
         // const portal_1 = new PortalHitbox();
 

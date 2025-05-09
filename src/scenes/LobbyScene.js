@@ -60,7 +60,7 @@ export class LobbyScene extends BaseScene {
         } );
 
         // Sound
-        this.loadSound( './assets/audio/lobby_demo_2.mp3' );
+        this.loadSound( './assets/audio/lobby.mp3' );
 
         // Light
         this.addSpotLight( [ 0, 0.15, 0 ], 0xecb95f, 35.5, 14.6, 0.5, 1, 2 );
