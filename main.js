@@ -53,9 +53,9 @@ function init() {
     scene.background = new THREE.Color( 0x000000 );
 
     SceneManager.init( scene );
-    SceneManager.addScene( 'lobby', new LobbyScene( listener, 0.1 ) );
+    SceneManager.addScene( 'lobby', new LobbyScene( listener, 0.13 ) );
     SceneManager.addScene( 'products', new BeyondProductsScene( listener, 0.1 ) );
-    SceneManager.addScene( 'senses', new BeyondSensesScene( listener, 0.025 ) );
+    SceneManager.addScene( 'senses', new BeyondSensesScene( listener, 0.02 ) );
     SceneManager.addScene( 'spaces', new BeyondSpacesScene( listener, 0.02 ) );
 
     SceneManager.addScene('particles', new ParticleTestScene(listener));
