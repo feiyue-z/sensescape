@@ -24,7 +24,6 @@ export class LobbyScene extends BaseScene {
                 }
             } );
 
-            // model.scale.set(0.5,0.5,0.5);
             this.group.add( model );
         } );
 
@@ -89,9 +88,12 @@ export class LobbyScene extends BaseScene {
         this.addPointLight( [ -5.1, 30, 4.8 ], 0x922dae, 500, 100, 2 );
 
         // Portal
-        this.portals.push( new PortalHitbox( [ -28, 22, -49 ], [ 6, 12, 6 ], 'products', [ -16.4, -1.3, -5.3 ] ) ); 
-        this.portals.push( new PortalHitbox( [ 56, 22, 0 ], [ 6, 12, 6 ], 'senses', [ 0, 0.3, 1.5 ] ) ); 
-        this.portals.push( new PortalHitbox( [ -29, 22, 51 ], [ 6, 12, 6 ], 'spaces', [ 0, 0.9, 10 ] ) ); 
+        // const portal_1 = new PortalHitbox( [ 0, 0, 0 ] );
+        // this.group.add( portal_1 );
+        this.portals.push( new PortalHitbox( [ -28, 22, -49 ], [ 6, 12, 6 ], 'products' ) ); 
+        this.portals.push( new PortalHitbox( [ 56, 22, 0 ], [ 6, 12, 6 ], 'senses' ) ); 
+        this.portals.push( new PortalHitbox( [ -29, 22, 51 ], [ 6, 12, 6 ], 'spaces' ) ); 
+        // this.group.add( this.portals[0] );
 
         this.portals.forEach( ( portal ) => {
             this.group.add( portal );

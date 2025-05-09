@@ -5,7 +5,7 @@ const raycaster = new THREE.Raycaster();
 const prevMouse = new THREE.Vector2();
 const mouseNDC = new THREE.Vector2();
 
-const NAVIGATE_STEP = 0.05;
+const NAVIGATE_STEP = 0.1;
 // const NAVIGATE_STEP = 0.002;
 const ROTATION_SENSITIVITY = 0.001;
 
@@ -40,14 +40,17 @@ export function onKeyUp( event ) {
     keyMap.set( event.code, false );
 }
 
-export function updateKeyboardMovement( camera ) {
-    if ( keyMap.get( 'KeyW' ) ) camera.translateZ( -NAVIGATE_STEP );
-    if ( keyMap.get( 'KeyS' ) ) camera.translateZ(  NAVIGATE_STEP );
-    if ( keyMap.get( 'KeyA' ) ) camera.translateX( -NAVIGATE_STEP );
-    if ( keyMap.get( 'KeyD' ) ) camera.translateX(  NAVIGATE_STEP );
-    if ( keyMap.get( 'KeyR' ) ) camera.translateY(  NAVIGATE_STEP );
-    if ( keyMap.get( 'KeyC' ) ) camera.translateY( -NAVIGATE_STEP );
+export function updateKeyboardMovement(camera, scene) {
+    const NAVIGATE_STEP = scene?.getNavigateSpeed?.() ?? 0.1;
+  
+    if (keyMap.get('KeyW')) camera.translateZ(-NAVIGATE_STEP);
+    if (keyMap.get('KeyS')) camera.translateZ( NAVIGATE_STEP);
+    if (keyMap.get('KeyA')) camera.translateX(-NAVIGATE_STEP);
+    if (keyMap.get('KeyD')) camera.translateX( NAVIGATE_STEP);
+    if (keyMap.get('KeyR')) camera.translateY( NAVIGATE_STEP);
+    if (keyMap.get('KeyC')) camera.translateY(-NAVIGATE_STEP);
 }
+  
 
 export function onMouseMove( event ) {
     updateMouseNDC( event );

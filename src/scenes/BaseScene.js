@@ -9,6 +9,7 @@ export class BaseScene {
         this.group = new THREE.Group(); // Holds all objects in the scene
         this.portals = []
         this.sound = new THREE.Audio( listener );
+        this.navigateSpeed = 0.1; // Default value
     }
 
     load() {
@@ -127,5 +128,9 @@ export class BaseScene {
         this.group.add( directionalLight );
     
         return directionalLight;
+    }
+
+    getNavigateSpeed() {
+        return this.navigateSpeed;
     }
 }

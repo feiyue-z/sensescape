@@ -24,7 +24,7 @@ init();
 function init() {
     // Set up camera
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.01, 5000 );
-    // camera.position.set( 0, 0.5, 0.5 ); // BEYOND SPACES TESTING
+    // camera.position.set( 0, 0.5, 0.5 ); // BEYOND SENSES TESTING
 
     camera.position.set( -9.15, 20.89, 0.21 );
     camera.rotation.set( 0, -Math.PI / 2, 0 );
@@ -94,13 +94,14 @@ let lastcam = new THREE.Vector3();
 function animate() {
     // const deltaTime = clock.getDelta();
     // const elapsed = clock.getElapsedTime();
+    const currentScene = SceneManager.getCurrentScene();
 
     if ( !lastcam.equals( camera.position ) ) {
         console.log( camera.position );
         lastcam.copy( camera.position );
     }
     
-    updateKeyboardMovement( camera );
+    updateKeyboardMovement(camera, currentScene);
     updateMouseMovement( camera );
     updateParticleSystem( camera );
 

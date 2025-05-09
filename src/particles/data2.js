@@ -9,7 +9,7 @@ export default {
         cache: { totalEmitTimes: null, life: null },
         rate: {
           particlesMin: 2,
-          particlesMax: 5,
+          particlesMax: 6,
           perSecondMin: 0.01,
           perSecondMax: 0.05
         },
@@ -24,7 +24,7 @@ export default {
           {
             id: "51ca9452-3d8b-11e9-a1e8-4785d9606b75",
             type: "Life",
-            properties: { min: 1.5, max: 3, isEnabled: true }
+            properties: { min: 2, max: 3, isEnabled: true }
           },
           {
             id: "51ca9453-3d8b-11e9-a1e8-4785d9606b75",
@@ -37,7 +37,7 @@ export default {
           {
             id: "51ca9454-3d8b-11e9-a1e8-4785d9606b75",
             type: "Radius",
-            properties: { width: 0.015, height: 0.05, isEnabled: true }
+            properties: { width: 0.02, height: 0.05, isEnabled: true }
           },
           {
             id: "51ca9455-3d8b-11e9-a1e8-4785d9606b75",
