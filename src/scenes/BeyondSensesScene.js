@@ -108,7 +108,6 @@ export class BeyondSensesScene extends BaseScene {S
             // Setup animation mixer
             const mixer = new THREE.AnimationMixer( gltf.scene );
             gltf.animations.forEach( ( clip ) => {
-                console.log("*")
                 mixer.clipAction( clip ).play();
             } );
 

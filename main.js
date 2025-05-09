@@ -84,7 +84,7 @@ function init() {
     document.addEventListener( 'mousemove', ( event ) => onMouseMove( event ) );
     // document.addEventListener( 'click', ( event ) => onMouseClick( event, camera ) );
 
-    initGUI();
+    // initGUI();
 }
 
 let lastcam = new THREE.Vector3();
